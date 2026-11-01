@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5517b3eb9c7294548998e2ae8d1b67ad, type: 3}
+  m_Name: DialogueDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueDatabase
+  nodes:
+  - nodeId: day1_start
+    speakerName: 1일 차
+    dialogueText: 아침이다. 휴대폰에 친구의 메시지가 와 있다.
+    choices:
+    - optionId: reply
+      buttonText: 답장하기
+      mentalChange: 10
+      nextStoryId: friend_conversation
+      nextDialogueNodeId: 
+    - optionId: ignore
+      buttonText: 무시하기
+      mentalChange: -20
+      nextStoryId: friend_message_ignored
+      nextDialogueNodeId: 
+  - nodeId: day2_start
+    speakerName: 2일 차
+    dialogueText: 방이 어제보다 더 조용하게 느껴진다. 커튼을 열어 볼까?
+    choices:
+    - optionId: open_curtains
+      buttonText: 커튼 열기
+      mentalChange: 5
+      nextStoryId: day2_curtains_open
+      nextDialogueNodeId: 
+    - optionId: stay_in_dark
+      buttonText: 어둠 속에 있기
+      mentalChange: -15
+      nextStoryId: day2_curtains_closed
+      nextDialogueNodeId: 
+  - nodeId: day1_phone
+    speakerName: 휴대폰
+    dialogueText: 읽지 않은 메시지가 하나 있다. 아직 답할 자신은 없다.
+    choices:
+    - optionId: close_phone
+      buttonText: 휴대폰 내려놓기
+      mentalChange: 0
+      nextStoryId: day1_phone_checked
+      nextDialogueNodeId: 
+  - nodeId: day1_meal
+    speakerName: 식사
+    dialogueText: 음식은 식었지만, 조금이라도 먹는 편이 나을지도 모른다.
+    choices:
+    - optionId: eat
+      buttonText: 먹기
+      mentalChange: 8
+      nextStoryId: day1_meal_eaten
+      nextDialogueNodeId: 
+    - optionId: skip
+      buttonText: 먹지 않기
+      mentalChange: -10
+      nextStoryId: day1_meal_skipped
+      nextDialogueNodeId: 
+  - nodeId: day1_medicine
+    speakerName: 약
+    dialogueText: 책상 위에 약병이 놓여 있다.
+    choices:
+    - optionId: take
+      buttonText: 약 먹기
+      mentalChange: 5
+      nextStoryId: day1_medicine_taken
+      nextDialogueNodeId: 
+    - optionId: avoid
+      buttonText: 약 치우기
+      mentalChange: -8
+      nextStoryId: day1_medicine_avoided
+      nextDialogueNodeId: 
+  - nodeId: day2_meal
+    speakerName: 식사
+    dialogueText: 어제부터 제대로 먹지 못했다.
+    choices:
+    - optionId: eat
+      buttonText: 먹기
+      mentalChange: 6
+      nextStoryId: day2_meal_eaten
+      nextDialogueNodeId: 
+    - optionId: skip
+      buttonText: 먹지 않기
+      mentalChange: -12
+      nextStoryId: day2_meal_skipped
+      nextDialogueNodeId: 
+  - nodeId: day2_medicine
+    speakerName: 약
+    dialogueText: 스스로를 돌보는 일도 아직은 버겁다.
+    choices:
+    - optionId: take
+      buttonText: 약 먹기
+      mentalChange: 4
+      nextStoryId: day2_medicine_taken
+      nextDialogueNodeId: 
+    - optionId: avoid
+      buttonText: 약 치우기
+      mentalChange: -10
+      nextStoryId: day2_medicine_avoided
+      nextDialogueNodeId: 
+  - nodeId: day2_phone
+    speakerName: 휴대폰
+    dialogueText: 새 메시지는 없다. 오늘은 이 침묵이 더 무겁게 느껴진다.
+    choices:
+    - optionId: close_phone
+      buttonText: 휴대폰 내려놓기
+      mentalChange: -3
+      nextStoryId: day2_phone_checked
+      nextDialogueNodeId: 
+  - nodeId: day1_window
+    speakerName: 창문
+    dialogueText: 아침 빛이 방 안으로 들어온다. 밖의 도시는 아무 일 없다는 듯 움직인다.
+    choices:
+    - optionId: step_back
+      buttonText: 창문에서 물러나기
+      mentalChange: 0
+      nextStoryId: day1_window_checked
+      nextDialogueNodeId: 
+  - nodeId: day2_window
+    speakerName: 창문
+    dialogueText: 풍경은 같지만, 오늘은 전혀 다르게 느껴진다.
+    choices:
+    - optionId: close_curtains
+      buttonText: 커튼 닫기
+      mentalChange: -2
+      nextStoryId: day2_window_checked
+      nextDialogueNodeId: 
+  - nodeId: friend_message
+    speakerName: 친구
+    dialogueText: 요즘 어때? 괜찮아?
+    choices:
+    - optionId: reply
+      buttonText: 답장하기
+      mentalChange: 10
+      nextStoryId: freind_conversation
+      nextDialogueNodeId: 
+    - optionId: ignore
+      buttonText: 무시하기
+      mentalChange: -20
+      nextStoryId: friend_massage_ignore
+      nextDialogueNodeId: 
