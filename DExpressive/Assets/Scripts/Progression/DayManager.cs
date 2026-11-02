@@ -34,6 +34,7 @@ public class DayManager : MonoBehaviour
     public int CurrentDay => GameStateManager.Instance == null ? 0 : GameStateManager.Instance.CurrentState.day;
     public event Action<int> OnDayStarted;
     public event Action<int> OnDayEnded;
+    public event Action<int> OnDailyActionRegistered;
 
     private bool isBeginningDay;
     private bool rolledBackDuringSleep;
@@ -135,6 +136,7 @@ public class DayManager : MonoBehaviour
         if (!state.completedInteractions.Contains(actionFlag))
         {
             state.completedInteractions.Add(actionFlag);
+            OnDailyActionRegistered?.Invoke(CurrentDay);
         }
     }
 
@@ -169,6 +171,19 @@ public class DayManager : MonoBehaviour
         isBeginningDay = false;
         OnDayStarted?.Invoke(definition.day);
 
+        if (!string.IsNullOrWhiteSpace(definition.startingDialogueNodeId))
+        {
+            dialogueManager.StartDialogue(definition.startingDialogueNodeId);
+        }
+    }
+
+    /// <summary>Refreshes the loaded day's UI without applying its start penalty again.</summary>
+    public void ResumeLoadedDay()
+    {
+        DayDefinition definition = GetDay(CurrentDay);
+        if (definition == null) return;
+
+        OnDayStarted?.Invoke(definition.day);
         if (!string.IsNullOrWhiteSpace(definition.startingDialogueNodeId))
         {
             dialogueManager.StartDialogue(definition.startingDialogueNodeId);

@@ -25,7 +25,7 @@ public class PrototypeInteractionController : MonoBehaviour
         Ray ray = interactionCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            PrototypeInteractionTarget target = hit.collider.GetComponent<PrototypeInteractionTarget>();
+            PrototypeInteractionTarget target = hit.collider.GetComponentInParent<PrototypeInteractionTarget>();
             if (target != null) Interact(target.Type);
         }
     }
@@ -65,6 +65,7 @@ public class PrototypeInteractionController : MonoBehaviour
                 StartOneTimeDayDialogue("medicine");
                 break;
             case PrototypeInteractionTarget.InteractionType.Door:
+                FirstPersonPlayerController.UnlockCursor();
                 StartDayDialogue("door");
                 break;
             case PrototypeInteractionTarget.InteractionType.Mirror:
@@ -93,6 +94,7 @@ public class PrototypeInteractionController : MonoBehaviour
             return;
         }
 
+        // Only release the cursor after confirming that a dialogue will open.
         FirstPersonPlayerController.UnlockCursor();
         dialogueManager.StartDialogue(nodeId);
     }

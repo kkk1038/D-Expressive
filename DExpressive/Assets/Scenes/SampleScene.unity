@@ -1025,6 +1025,7 @@ MonoBehaviour:
   rollbackManager: {fileID: 768260580}
   days: []
   startCurrentDayOnStart: 1
+  noActionSleepMentalPenalty: 30
 --- !u!114 &768260587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,6 +1052,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrototypeRoomBootstrap
   dayManager: {fileID: 768260586}
+  useImportedBed: 1
+  useImportedDeskSet: 1
 --- !u!114 &768260589
 MonoBehaviour:
   m_ObjectHideFlags: 0

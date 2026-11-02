@@ -13,6 +13,7 @@ public class RoomMoodController : MonoBehaviour
     private Renderer windowRenderer;
     private Image fadeImage;
     private TMP_Text rollbackLabel;
+    private Image mentalOverlay;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class RoomMoodController : MonoBehaviour
         roomLight = GameObject.Find("Prototype Room Light")?.GetComponent<Light>();
         windowRenderer = GameObject.Find("Window - Click to Look Outside")?.GetComponent<Renderer>();
         CreateTransitionUI();
+        CreateMentalOverlay();
         ApplyMood();
     }
 
@@ -60,6 +62,12 @@ public class RoomMoodController : MonoBehaviour
         windowRenderer.material.color = Color.Lerp(lowMentalWindow, dayWindow, mental);
 
         RenderSettings.ambientLight = Color.Lerp(new Color(0.04f, 0.05f, 0.10f), new Color(0.35f, 0.35f, 0.40f), mental);
+
+        if (mentalOverlay != null)
+        {
+            float distress = Mathf.Clamp01((45f - state.mentalState) / 45f);
+            mentalOverlay.color = new Color(0.24f, 0.02f, 0.08f, distress * 0.32f);
+        }
     }
 
     private void PlayRollbackTransition()
@@ -119,6 +127,19 @@ public class RoomMoodController : MonoBehaviour
         rollbackLabel.alignment = TextAlignmentOptions.Center;
         rollbackLabel.fontSize = 38;
         rollbackLabel.color = Color.white;
+    }
+
+    private void CreateMentalOverlay()
+    {
+        Canvas canvas = FindFirstObjectByType<Canvas>();
+        if (canvas == null) return;
+        GameObject overlay = new GameObject("Mental State Overlay", typeof(RectTransform), typeof(Image));
+        overlay.transform.SetParent(canvas.transform, false);
+        RectTransform rect = overlay.GetComponent<RectTransform>();
+        rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one;
+        rect.offsetMin = Vector2.zero; rect.offsetMax = Vector2.zero;
+        mentalOverlay = overlay.GetComponent<Image>();
+        mentalOverlay.raycastTarget = false;
     }
 
     private void SetFadeAlpha(float alpha)

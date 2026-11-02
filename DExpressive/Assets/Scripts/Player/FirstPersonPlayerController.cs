@@ -17,17 +17,27 @@ public class FirstPersonPlayerController : MonoBehaviour
     private float pitch;
     private float verticalVelocity;
     private PrototypeInteractionTarget focusedTarget;
+    private PrototypeInteractionTarget previousFocusedTarget;
+    private ChoiceUI choiceUI;
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
         if (playerCamera == null) playerCamera = Camera.main;
+        choiceUI = FindFirstObjectByType<ChoiceUI>();
         UnlockCursor();
     }
 
     private void Update()
     {
         if (Keyboard.current == null) return;
+
+        // A dialogue owns all input until the player makes a choice.
+        if (choiceUI != null && choiceUI.IsShowing)
+        {
+            if (interactionHint != null) interactionHint.text = "선택지를 클릭하거나 1 / 2 키를 누르세요";
+            return;
+        }
 
         Move();
         LookForInteraction();
@@ -50,16 +60,8 @@ public class FirstPersonPlayerController : MonoBehaviour
     {
         if (playerCamera == null) return;
 
-        if (Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        if (Mouse.current != null && Mouse.current.rightButton.wasReleasedThisFrame)
-        {
-            UnlockCursor();
-        }
-
+        // Normal play uses direct mouse look. The cursor is released only
+        // when dialogue or a menu needs a mouse click.
         if (Cursor.lockState == CursorLockMode.Locked && Mouse.current != null)
         {
             Vector2 mouseDelta = Mouse.current.delta.ReadValue() * lookSensitivity;
@@ -72,14 +74,21 @@ public class FirstPersonPlayerController : MonoBehaviour
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance))
         {
-            focusedTarget = hit.collider.GetComponent<PrototypeInteractionTarget>();
+            focusedTarget = hit.collider.GetComponentInParent<PrototypeInteractionTarget>();
+        }
+
+        if (previousFocusedTarget != focusedTarget)
+        {
+            if (previousFocusedTarget != null) previousFocusedTarget.SetFocused(false);
+            if (focusedTarget != null) focusedTarget.SetFocused(true);
+            previousFocusedTarget = focusedTarget;
         }
 
         if (interactionHint != null)
         {
             interactionHint.text = focusedTarget == null
-                ? "WASD: 이동    마우스 오른쪽 버튼: 시점 이동"
-                : "F : " + GetPrompt(focusedTarget.Type);
+                ? "WASD: 이동    마우스: 시점 이동"
+                : "[ F ]  " + GetPrompt(focusedTarget.Type);
         }
 
         if (focusedTarget != null && Keyboard.current.fKey.wasPressedThisFrame)
@@ -96,11 +105,11 @@ public class FirstPersonPlayerController : MonoBehaviour
             PrototypeInteractionTarget.InteractionType.Phone => "휴대폰 확인하기",
             PrototypeInteractionTarget.InteractionType.Window => "창밖 보기",
             PrototypeInteractionTarget.InteractionType.Meal => "식사하기",
-            PrototypeInteractionTarget.InteractionType.Medicine => "약 먹기",
-            PrototypeInteractionTarget.InteractionType.Door => "현관문 보기",
+            PrototypeInteractionTarget.InteractionType.Medicine => "약 복용하기",
+            PrototypeInteractionTarget.InteractionType.Door => "현관문 확인하기",
             PrototypeInteractionTarget.InteractionType.Mirror => "거울 보기",
             PrototypeInteractionTarget.InteractionType.Shower => "세수하기",
-            PrototypeInteractionTarget.InteractionType.Tidy => "하나 정리하기",
+            PrototypeInteractionTarget.InteractionType.Tidy => "물건 정리하기",
             _ => "상호작용"
         };
     }
@@ -109,5 +118,16 @@ public class FirstPersonPlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    public static void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    private void OnDisable()
+    {
+        if (previousFocusedTarget != null) previousFocusedTarget.SetFocused(false);
     }
 }

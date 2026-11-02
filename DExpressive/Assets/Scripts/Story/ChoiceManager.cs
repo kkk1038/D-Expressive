@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ChoiceManager : MonoBehaviour
 {
+    public event System.Action<string, string, int> OnChoiceSelected;
     [SerializeField]
     private StoryManager storyManager;
 
@@ -22,5 +23,6 @@ public class ChoiceManager : MonoBehaviour
         );
 
         mentalManager.ChangeMentalState(mentalChange);
+        OnChoiceSelected?.Invoke(choiceId, optionId, mentalChange);
     }
 }

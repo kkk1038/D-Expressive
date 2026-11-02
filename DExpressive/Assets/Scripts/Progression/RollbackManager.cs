@@ -30,14 +30,18 @@ public class RollbackManager : MonoBehaviour
 
     public void Rollback()
     {
+        int currentDay = GameStateManager.Instance.CurrentState.day;
+        // Reaching zero is a full setback: return to the beginning of the
+        // previous day. Day 1 has no earlier day, so it returns to Day 1.
+        int rollbackDay = Mathf.Max(1, currentDay - 1);
         GameStateData checkpoint =
-            checkpointManager.LoadCheckpoint();
+            checkpointManager.LoadCheckpointForDay(rollbackDay);
 
         if (checkpoint == null) return;
 
         GameStateManager.Instance.SetState(checkpoint);
 
-        Debug.Log("완전 회귀 실행!");
+        Debug.Log("완전 회귀 실행! " + rollbackDay + "일 차로 돌아갑니다.");
         Debug.Log("복원 날짜: " + checkpoint.day);
         Debug.Log("복원 정신력: " + checkpoint.mentalState);
 
