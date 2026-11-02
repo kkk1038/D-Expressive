@@ -38,6 +38,7 @@ public class DayManager : MonoBehaviour
 
     private bool isBeginningDay;
     private bool rolledBackDuringSleep;
+    private bool rolledBackDuringDayBegin;
 
     private void Awake()
     {
@@ -140,7 +141,7 @@ public class DayManager : MonoBehaviour
         }
     }
 
-    public void BeginDay(int day, bool saveCheckpoint)
+    public void BeginDay(int day, bool saveCheckpoint, bool applyStartMentalChange = true)
     {
         DayDefinition definition = GetDay(day);
         if (definition == null)
@@ -150,15 +151,25 @@ public class DayManager : MonoBehaviour
         }
 
         isBeginningDay = true;
+        rolledBackDuringDayBegin = false;
         GameStateData state = GameStateManager.Instance.CurrentState;
         state.day = definition.day;
         state.storyNodeId = string.IsNullOrWhiteSpace(definition.startingStoryNodeId)
             ? state.storyNodeId
             : definition.startingStoryNodeId;
 
-        if (definition.dayStartMentalChange != 0)
+        if (applyStartMentalChange && definition.dayStartMentalChange != 0)
         {
             mentalStateManager.ChangeMentalState(definition.dayStartMentalChange);
+        }
+
+        // A zero mental state can synchronously restore an earlier checkpoint.
+        // Do not continue this abandoned day's setup or overwrite that checkpoint.
+        if (rolledBackDuringDayBegin)
+        {
+            isBeginningDay = false;
+            BeginDay(CurrentDay, false, false);
+            return;
         }
 
         // Save only after the day and its automatic mental effect are established,
@@ -193,9 +204,11 @@ public class DayManager : MonoBehaviour
     private void RestartRestoredDay()
     {
         rolledBackDuringSleep = true;
+        rolledBackDuringDayBegin = true;
         if (!isBeginningDay)
         {
-            BeginDay(CurrentDay, false);
+            // A checkpoint already includes the restored day's automatic change.
+            BeginDay(CurrentDay, false, false);
         }
     }
 

@@ -103,6 +103,14 @@ public class PrototypeGameUI : MonoBehaviour
 
     private void LateUpdate()
     {
+        // Several gameplay HUDs are created in Start, after this menu is built
+        // in Awake. Keep an open title/pause menu above them so the title is a
+        // real blank entry screen rather than a translucent gameplay overlay.
+        if (menuPanel != null && menuPanel.activeSelf)
+        {
+            menuPanel.transform.SetAsLastSibling();
+        }
+
         if (!hasStarted || Keyboard.current == null) return;
         if (Keyboard.current.f5Key.wasPressedThisFrame) PrototypeSaveManager.Save();
         if (Keyboard.current.f9Key.wasPressedThisFrame && PrototypeSaveManager.TryLoad()) dayManager.ResumeLoadedDay();
