@@ -30,7 +30,6 @@ public class PrototypeRoomBootstrap : MonoBehaviour
         BuildSleepButton();
         BuildDayHUD();
         BuildGameplaySystems();
-        PositionCamera();
     }
 
     private void BuildRoom()
@@ -313,14 +312,4 @@ public class PrototypeRoomBootstrap : MonoBehaviour
         gameUI.Initialize(dayManager);
     }
 
-    private static void PositionCamera()
-    {
-        Camera camera = Camera.main;
-        if (camera == null) return;
-
-        camera.transform.position = new Vector3(0, 3.5f, -5.8f);
-        camera.transform.rotation = Quaternion.Euler(13f, 0f, 0f);
-        camera.clearFlags = CameraClearFlags.SolidColor;
-        camera.backgroundColor = new Color(0.07f, 0.08f, 0.12f);
-    }
 }

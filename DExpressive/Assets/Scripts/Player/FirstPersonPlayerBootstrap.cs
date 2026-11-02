@@ -17,9 +17,12 @@ public class FirstPersonPlayerBootstrap : MonoBehaviour
         controller.center = new Vector3(0f, 0.9f, 0f);
 
         Camera camera = Camera.main;
+        if (camera == null) return;
         camera.transform.SetParent(player.transform);
         camera.transform.localPosition = new Vector3(0f, 1.6f, 0f);
         camera.transform.localRotation = Quaternion.identity;
+        camera.clearFlags = CameraClearFlags.SolidColor;
+        camera.backgroundColor = new Color(0.07f, 0.08f, 0.12f);
 
         FirstPersonPlayerController playerController = player.AddComponent<FirstPersonPlayerController>();
         SetPrivateField(playerController, "playerCamera", camera);
