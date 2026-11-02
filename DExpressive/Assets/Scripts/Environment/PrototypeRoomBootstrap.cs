@@ -27,7 +27,6 @@ public class PrototypeRoomBootstrap : MonoBehaviour
         }
 
         BuildRoom();
-        BuildSleepButton();
         BuildDayHUD();
         BuildGameplaySystems();
     }
