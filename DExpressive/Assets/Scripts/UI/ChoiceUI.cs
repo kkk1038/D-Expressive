@@ -24,6 +24,17 @@ public class ChoiceUI : MonoBehaviour
 
     public bool IsShowing => choicePanel != null && choicePanel.activeSelf;
 
+    /// <summary>Closes a pending conversation without applying a choice.</summary>
+    public void HideChoices()
+    {
+        if (choicePanel == null) return;
+        onDialogueChoiceSelected = null;
+        displayedDialogueChoices = null;
+        isSelecting = false;
+        choicePanel.SetActive(false);
+        EventSystem.current?.SetSelectedGameObject(null);
+    }
+
     private void Awake()
     {
         Initialize();
@@ -34,7 +45,7 @@ public class ChoiceUI : MonoBehaviour
         if (initialized) return;
         initialized = true;
 
-        choicePanel.SetActive(false);
+        HideChoices();
         ConfigureLayout();
         questionText.raycastTarget = false;
         SetTextRaycast(replyButton, false);

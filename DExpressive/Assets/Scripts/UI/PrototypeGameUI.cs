@@ -53,18 +53,21 @@ public class PrototypeGameUI : MonoBehaviour
     private void StartNewGame()
     {
         if (GameStateManager.Instance != null) GameStateManager.Instance.SetState(new GameStateData());
+        // DayManager begins once while the title is visible. Discard that hidden
+        // pre-title conversation, then deliberately make a fresh DAY 1 checkpoint.
+        FindFirstObjectByType<DialogueManager>()?.EndDialogue();
         hasStarted = true;
         menuPanel.SetActive(false);
         IsMenuOpen = false;
         Time.timeScale = 1f;
-        ChoiceUI choiceUI = FindFirstObjectByType<ChoiceUI>();
-        if (choiceUI != null && choiceUI.IsShowing) FirstPersonPlayerController.UnlockCursor();
-        else FirstPersonPlayerController.LockCursor();
+        dayManager.BeginDay(1, true);
+        FirstPersonPlayerController.UnlockCursor();
     }
 
     private void LoadGame()
     {
         if (!PrototypeSaveManager.TryLoad()) return;
+        FindFirstObjectByType<DialogueManager>()?.EndDialogue();
         hasStarted = true;
         menuPanel.SetActive(false);
         IsMenuOpen = false;

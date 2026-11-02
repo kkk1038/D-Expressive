@@ -28,6 +28,13 @@ public class DialogueManager : MonoBehaviour
         ShowNode(nodeId);
     }
 
+    /// <summary>Ends a pending dialogue without recording a choice.</summary>
+    public void EndDialogue()
+    {
+        currentNode = null;
+        if (choiceUI != null) choiceUI.HideChoices();
+    }
+
     private void ShowNode(string nodeId)
     {
         if (!dialogueDatabase.TryGetNode(nodeId, out currentNode))
