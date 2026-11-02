@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>Minimal first-person movement and E-key interaction for the prototype room.</summary>
+/// <summary>First-person movement and F-key interaction for the room.</summary>
 [RequireComponent(typeof(CharacterController))]
 public class FirstPersonPlayerController : MonoBehaviour
 {

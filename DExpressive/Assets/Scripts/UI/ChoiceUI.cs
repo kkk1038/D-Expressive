@@ -59,9 +59,9 @@ public class ChoiceUI : MonoBehaviour
     {
         onDialogueChoiceSelected = null;
         displayedDialogueChoices = null;
-        questionText.text = "How have you been? Are you okay?";
-        SetButtonText(replyButton, "Reply");
-        SetButtonText(ignoreButton, "Ignore");
+        questionText.text = "오늘은 어떤 하루였나요?";
+        SetButtonText(replyButton, "대답한다");
+        SetButtonText(ignoreButton, "지금은 답하지 않는다");
         replyButton.gameObject.SetActive(true);
         ignoreButton.gameObject.SetActive(true);
         choicePanel.SetActive(true);
