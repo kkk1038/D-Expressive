@@ -117,7 +117,10 @@ public class PrototypeRoomBootstrap : MonoBehaviour
         // Entrance behind the player: two wall sections frame a real front door.
         CreateBlock(room, "Entrance Wall Left", new Vector3(-2.45f, 2.5f, -1.45f), new Vector3(5.1f, 5f, 0.22f), wall);
         CreateBlock(room, "Entrance Wall Right", new Vector3(3.45f, 2.5f, -1.45f), new Vector3(3.1f, 5f, 0.22f), wall);
-        GameObject frontDoor = CreateBlock(room, "Door - Click to Interact", new Vector3(1.0f, 1.7f, -1.32f), new Vector3(1.65f, 3.3f, 0.14f), wood);
+        Transform doorHinge = new GameObject("Entrance Door Hinge").transform;
+        doorHinge.SetParent(room);
+        doorHinge.position = new Vector3(0.18f, 0f, -1.32f);
+        GameObject frontDoor = CreateBlock(doorHinge, "Door - Click to Interact", new Vector3(1.0f, 1.7f, -1.32f), new Vector3(1.65f, 3.3f, 0.14f), wood);
         frontDoor.AddComponent<PrototypeInteractionTarget>().SetType(PrototypeInteractionTarget.InteractionType.Door);
         CreateBlock(room, "Door Handle", new Vector3(1.58f, 1.65f, -1.18f), new Vector3(0.12f, 0.12f, 0.08f), metal);
         CreateBlock(room, "Shoe Cabinet", new Vector3(3.65f, 0.72f, -1.05f), new Vector3(1.65f, 1.38f, 0.45f), new Color(0.23f, 0.20f, 0.18f));
@@ -156,20 +159,19 @@ public class PrototypeRoomBootstrap : MonoBehaviour
 
     private void BuildDExpressiveFurniture(Transform room)
     {
-        // These are copies under Resources, made from the imported Cute Magic pack.
-        // Their materials are cloned at runtime, so the source pack stays untouched.
-        // The pack's window includes a full backing plane and would cover the
-        // first-person camera. Keep the existing window as the interaction surface.
-        // Storage belongs in the right-hand corridor, clear of the bathroom,
-        // shoe cabinet and desk footprint.
-        ReplaceWithFurniture(room, "Wardrobe", new Vector3(4.18f, 0.08f, 2.25f), new Vector3(0f, -90f, 0f),
-            new Color(0.25f, 0.21f, 0.20f), null, new Vector3(0.9f, 0.9f, 0.9f));
-        ReplaceWithFurniture(room, "Wall art_01", new Vector3(-3.4f, 2.8f, 6.22f), Vector3.zero,
-            new Color(0.42f, 0.42f, 0.48f), null, null, "Wall Notes");
-        ReplaceWithFurniture(room, "Plant pot_01", new Vector3(1.0f, 1.2f, 5.48f), Vector3.zero,
-            new Color(0.31f, 0.38f, 0.33f), null);
-        ReplaceWithFurniture(room, "Computer", new Vector3(3.35f, 1.45f, 4.72f), new Vector3(0f, 180f, 0f),
-            new Color(0.17f, 0.20f, 0.25f), null, new Vector3(1.45f, 1.45f, 1.45f));
+        // The imported bed/desk set has been visually validated. The other
+        // pack prefabs have inconsistent pivots, so use stable purpose-built
+        // props here instead of letting them overlap walls or the camera.
+        Color darkWood = new(0.20f, 0.16f, 0.14f);
+        CreateBlock(room, "Wardrobe Body", new Vector3(4.36f, 1.35f, 2.25f), new Vector3(0.72f, 2.7f, 1.30f), darkWood);
+        CreateBlock(room, "Wardrobe Door Left", new Vector3(3.98f, 1.37f, 1.93f), new Vector3(0.05f, 2.4f, 0.55f), new Color(0.28f, 0.23f, 0.21f));
+        CreateBlock(room, "Wardrobe Door Right", new Vector3(3.98f, 1.37f, 2.57f), new Vector3(0.05f, 2.4f, 0.55f), new Color(0.28f, 0.23f, 0.21f));
+        CreateBlock(room, "Wardrobe Handle", new Vector3(3.92f, 1.35f, 2.25f), new Vector3(0.06f, 0.10f, 0.10f), new Color(0.60f, 0.55f, 0.48f));
+
+        CreateBlock(room, "Computer Monitor", new Vector3(3.20f, 1.65f, 5.20f), new Vector3(0.10f, 0.68f, 0.92f), new Color(0.04f, 0.06f, 0.09f));
+        CreateBlock(room, "Computer Screen", new Vector3(3.13f, 1.65f, 5.20f), new Vector3(0.02f, 0.52f, 0.70f), new Color(0.12f, 0.20f, 0.31f));
+        CreateBlock(room, "Keyboard", new Vector3(3.32f, 1.25f, 4.70f), new Vector3(0.52f, 0.06f, 0.26f), new Color(0.10f, 0.12f, 0.15f));
+        CreateBlock(room, "Plant Pot", new Vector3(3.42f, 1.30f, 5.75f), new Vector3(0.22f, 0.35f, 0.22f), new Color(0.25f, 0.34f, 0.25f));
     }
 
     private static void ReplaceWithFurniture(Transform parent, string resourceName, Vector3 position, Vector3 rotation,
@@ -305,6 +307,8 @@ public class PrototypeRoomBootstrap : MonoBehaviour
         systems.AddComponent<RoomActionVisuals>();
         systems.AddComponent<DayPresentationController>();
         systems.AddComponent<SleepTransitionController>();
+        systems.AddComponent<DoorEndingController>();
+        systems.AddComponent<DailyRoomEvolution>();
         PrototypeGameUI gameUI = systems.AddComponent<PrototypeGameUI>();
         gameUI.Initialize(dayManager);
     }

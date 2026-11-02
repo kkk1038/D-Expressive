@@ -6,18 +6,23 @@ using UnityEngine.UI;
 public class RoomActionVisuals : MonoBehaviour
 {
     private ChoiceManager choiceManager;
+    private DayManager dayManager;
     private TMP_Text notice;
 
     private void Start()
     {
         choiceManager = FindFirstObjectByType<ChoiceManager>();
         if (choiceManager != null) choiceManager.OnChoiceSelected += ApplyResult;
+        dayManager = FindFirstObjectByType<DayManager>();
+        if (dayManager != null) dayManager.OnDayStarted += ResetDailyProps;
         CreateNotice();
+        ResetDailyProps(dayManager == null ? 1 : dayManager.CurrentDay);
     }
 
     private void OnDestroy()
     {
         if (choiceManager != null) choiceManager.OnChoiceSelected -= ApplyResult;
+        if (dayManager != null) dayManager.OnDayStarted -= ResetDailyProps;
     }
 
     private void ApplyResult(string choiceId, string optionId, int mentalChange)
@@ -39,6 +44,25 @@ public class RoomActionVisuals : MonoBehaviour
     {
         GameObject target = GameObject.Find(objectName);
         if (target != null) target.SetActive(visible);
+    }
+
+    private static void ResetDailyProps(int day)
+    {
+        // Consumables are a new day's routine; rollback also emits OnDayStarted
+        // and therefore restores the correct day's visible state.
+        SetVisible("Meal - Interact", true);
+        SetVisible("Medicine - Interact", true);
+        SetVisible("Cup - Click to Tidy", true);
+
+        if (GameStateManager.Instance == null) return;
+        foreach (ChoiceRecord record in GameStateManager.Instance.CurrentState.choiceHistory)
+        {
+            if (record.choiceId != "day" + day + "_meal" && record.choiceId != "day" + day + "_medicine" && record.choiceId != "day" + day + "_tidy") continue;
+            if (record.selectedOptionId.Contains("skip")) continue;
+            if (record.choiceId.EndsWith("_meal")) SetVisible("Meal - Interact", false);
+            if (record.choiceId.EndsWith("_medicine")) SetVisible("Medicine - Interact", false);
+            if (record.choiceId.EndsWith("_tidy")) SetVisible("Cup - Click to Tidy", false);
+        }
     }
 
     private void CreateNotice()

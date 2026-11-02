@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class CheckpointManager : MonoBehaviour
 {
+    [System.Serializable]
+    private class CheckpointCollection
+    {
+        public GameStateData latest;
+        public System.Collections.Generic.List<GameStateData> byDay = new();
+    }
+
     private GameStateData checkpoint;
     private readonly Dictionary<int, GameStateData> checkpointsByDay = new();
 
@@ -54,5 +61,31 @@ public class CheckpointManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(checkpointsByDay[selectedDay]);
         return JsonUtility.FromJson<GameStateData>(json);
+    }
+
+    public string ExportCheckpoints()
+    {
+        CheckpointCollection collection = new() { latest = checkpoint };
+        foreach (GameStateData saved in checkpointsByDay.Values)
+        {
+            string json = JsonUtility.ToJson(saved);
+            collection.byDay.Add(JsonUtility.FromJson<GameStateData>(json));
+        }
+        return JsonUtility.ToJson(collection);
+    }
+
+    public void ImportCheckpoints(string json)
+    {
+        if (string.IsNullOrWhiteSpace(json)) return;
+        CheckpointCollection collection = JsonUtility.FromJson<CheckpointCollection>(json);
+        if (collection == null) return;
+        checkpoint = collection.latest;
+        checkpointsByDay.Clear();
+        if (collection.byDay == null) return;
+        foreach (GameStateData saved in collection.byDay)
+        {
+            if (saved == null) continue;
+            checkpointsByDay[saved.day] = saved;
+        }
     }
 }

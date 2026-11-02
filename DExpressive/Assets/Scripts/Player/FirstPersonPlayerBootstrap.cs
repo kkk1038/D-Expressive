@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>Creates a runtime-only first-person capsule in the prototype room.</summary>
 public class FirstPersonPlayerBootstrap : MonoBehaviour
@@ -23,6 +24,7 @@ public class FirstPersonPlayerBootstrap : MonoBehaviour
         FirstPersonPlayerController playerController = player.AddComponent<FirstPersonPlayerController>();
         SetPrivateField(playerController, "playerCamera", camera);
         SetPrivateField(playerController, "interactionHint", CreateHint());
+        CreateCrosshair();
     }
 
     private static TMP_Text CreateHint()
@@ -43,6 +45,20 @@ public class FirstPersonPlayerBootstrap : MonoBehaviour
         hint.fontSize = 20;
         hint.color = Color.white;
         return hint;
+    }
+
+    private static void CreateCrosshair()
+    {
+        Canvas canvas = FindFirstObjectByType<Canvas>();
+        if (canvas == null) return;
+        GameObject crosshair = new GameObject("Interaction Crosshair", typeof(RectTransform), typeof(Image));
+        crosshair.transform.SetParent(canvas.transform, false);
+        RectTransform rect = crosshair.GetComponent<RectTransform>();
+        rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = new Vector2(7f, 7f);
+        Image image = crosshair.GetComponent<Image>();
+        image.color = new Color(1f, 1f, 1f, 0.72f);
+        image.raycastTarget = false;
     }
 
     // Keeps setup in one file without exposing prototype-only configuration in the Inspector.

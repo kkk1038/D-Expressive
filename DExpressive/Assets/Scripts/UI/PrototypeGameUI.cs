@@ -11,6 +11,8 @@ public class PrototypeGameUI : MonoBehaviour
     private DayManager dayManager;
     private GameObject menuPanel;
     private TMP_Text title;
+    private Button primaryButton;
+    private Button secondaryButton;
     private bool hasStarted;
 
     public void Initialize(DayManager manager)
@@ -43,13 +45,14 @@ public class PrototypeGameUI : MonoBehaviour
         title = CreateText(menuPanel.transform, "Title", new Vector2(0, 125), new Vector2(900, 90), 54);
         title.alignment = TextAlignmentOptions.Center;
         CreateText(menuPanel.transform, "Subtitle", new Vector2(0, 45), new Vector2(900, 48), 22).text = "D-EXPRESSIVE";
-        CreateButton("새 게임 시작", new Vector2(0, -55), StartNewGame);
-        CreateButton("저장 불러오기", new Vector2(0, -125), LoadGame);
+        primaryButton = CreateButton("새 게임 시작", new Vector2(0, -55), StartNewGame);
+        secondaryButton = CreateButton("저장 불러오기", new Vector2(0, -125), LoadGame);
         CreateText(menuPanel.transform, "Help", new Vector2(0, -235), new Vector2(800, 42), 18).text = "ESC: 일시정지    F5: 저장    F9: 불러오기";
     }
 
     private void StartNewGame()
     {
+        if (GameStateManager.Instance != null) GameStateManager.Instance.SetState(new GameStateData());
         hasStarted = true;
         menuPanel.SetActive(false);
         IsMenuOpen = false;
@@ -73,6 +76,8 @@ public class PrototypeGameUI : MonoBehaviour
     private void Pause()
     {
         title.text = "일시정지";
+        ConfigureButton(primaryButton, "계속하기", Resume);
+        ConfigureButton(secondaryButton, "저장하기", SaveGame);
         menuPanel.SetActive(true);
         IsMenuOpen = true;
         Time.timeScale = 0f;
@@ -85,6 +90,12 @@ public class PrototypeGameUI : MonoBehaviour
         IsMenuOpen = false;
         Time.timeScale = 1f;
         FirstPersonPlayerController.LockCursor();
+    }
+
+    private void SaveGame()
+    {
+        PrototypeSaveManager.Save();
+        title.text = "저장했습니다";
     }
 
     private void LateUpdate()
@@ -124,8 +135,18 @@ public class PrototypeGameUI : MonoBehaviour
     private void ShowTitle()
     {
         title.text = "D-EXPRESSIVE";
+        ConfigureButton(primaryButton, "새 게임 시작", StartNewGame);
+        ConfigureButton(secondaryButton, "저장 불러오기", LoadGame);
         IsMenuOpen = true;
         Time.timeScale = 0f;
         FirstPersonPlayerController.UnlockCursor();
+    }
+
+    private static void ConfigureButton(Button button, string label, UnityEngine.Events.UnityAction action)
+    {
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(action);
+        TMP_Text text = button.GetComponentInChildren<TMP_Text>();
+        if (text != null) text.text = label;
     }
 }
