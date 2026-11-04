@@ -13,6 +13,7 @@ public class PrototypeRoomBootstrap : MonoBehaviour
     private bool useImportedBed = true;
     [SerializeField, Tooltip("Validated imported replacements for the desk corner.")]
     private bool useImportedDeskSet = true;
+    [SerializeField] private InteriorKitGamePalette interiorKitPalette;
 
     private readonly Color wallColor = new(0.35f, 0.38f, 0.46f);
     private readonly Color floorColor = new(0.18f, 0.16f, 0.15f);
@@ -104,10 +105,14 @@ public class PrototypeRoomBootstrap : MonoBehaviour
         roomLight.transform.position = new Vector3(0, 4.2f, 3.2f);
 
         // Replace one object at a time while validating imported asset scale.
-        if (useImportedBed) BuildImportedBed(room);
-        if (useImportedDeskSet) BuildImportedDeskSet(room);
+        if (interiorKitPalette == null)
+        {
+            if (useImportedBed) BuildImportedBed(room);
+            if (useImportedDeskSet) BuildImportedDeskSet(room);
+        }
 
         BuildDExpressiveFurniture(room);
+        if (interiorKitPalette != null) interiorKitPalette.Apply(room);
     }
 
     private static void BuildEntranceAndBathroom(Transform room, Color wall, Color wood, Color metal)
@@ -242,7 +247,7 @@ public class PrototypeRoomBootstrap : MonoBehaviour
         block.transform.SetParent(parent);
         block.transform.position = position;
         block.transform.localScale = scale;
-        block.GetComponent<Renderer>().material.color = color;
+        block.GetComponent<Renderer>().sharedMaterial = RuntimeRoomMaterial.Create(color);
         return block;
     }
 

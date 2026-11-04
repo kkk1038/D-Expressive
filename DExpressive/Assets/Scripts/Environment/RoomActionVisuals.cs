@@ -27,9 +27,13 @@ public class RoomActionVisuals : MonoBehaviour
 
     private void ApplyResult(string choiceId, string optionId, int mentalChange)
     {
-        if (optionId.Contains("_meal") && !optionId.Contains("skip")) SetVisible("Meal - Interact", false);
-        if (optionId.Contains("_medicine") && !optionId.Contains("skip")) SetVisible("Medicine - Interact", false);
-        if (optionId.Contains("_tidy") && !optionId.Contains("skip")) SetVisible("Cup - Click to Tidy", false);
+        if (WasConsumed(choiceId, optionId, "meal")) SetVisible("Meal - Interact", false);
+        if (WasConsumed(choiceId, optionId, "medicine")) SetVisible("Medicine - Interact", false);
+        if (WasConsumed(choiceId, optionId, "tidy"))
+        {
+            SetVisible("Cup - Click to Tidy", false);
+            SetVisible("Trash Bin Contents", false);
+        }
 
         if (notice != null)
         {
@@ -43,6 +47,16 @@ public class RoomActionVisuals : MonoBehaviour
     private static void SetVisible(string objectName, bool visible)
     {
         GameObject target = GameObject.Find(objectName);
+        // Consumed props are inactive; GameObject.Find cannot find them on the next day or rollback.
+        if (target == null)
+        {
+            foreach (Transform candidate in Object.FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            {
+                if (candidate.name != objectName || !candidate.gameObject.scene.IsValid()) continue;
+                target = candidate.gameObject;
+                break;
+            }
+        }
         if (target != null) target.SetActive(visible);
     }
 
@@ -53,16 +67,27 @@ public class RoomActionVisuals : MonoBehaviour
         SetVisible("Meal - Interact", true);
         SetVisible("Medicine - Interact", true);
         SetVisible("Cup - Click to Tidy", true);
+        SetVisible("Trash Bin Contents", true);
 
         if (GameStateManager.Instance == null) return;
         foreach (ChoiceRecord record in GameStateManager.Instance.CurrentState.choiceHistory)
         {
             if (record.choiceId != "day" + day + "_meal" && record.choiceId != "day" + day + "_medicine" && record.choiceId != "day" + day + "_tidy") continue;
-            if (record.selectedOptionId.Contains("skip")) continue;
-            if (record.choiceId.EndsWith("_meal")) SetVisible("Meal - Interact", false);
-            if (record.choiceId.EndsWith("_medicine")) SetVisible("Medicine - Interact", false);
-            if (record.choiceId.EndsWith("_tidy")) SetVisible("Cup - Click to Tidy", false);
+            if (WasConsumed(record.choiceId, record.selectedOptionId, "meal")) SetVisible("Meal - Interact", false);
+            if (WasConsumed(record.choiceId, record.selectedOptionId, "medicine")) SetVisible("Medicine - Interact", false);
+            if (WasConsumed(record.choiceId, record.selectedOptionId, "tidy"))
+            {
+                SetVisible("Cup - Click to Tidy", false);
+                SetVisible("Trash Bin Contents", false);
+            }
         }
+    }
+
+    private static bool WasConsumed(string choiceId, string optionId, string action)
+    {
+        if (string.IsNullOrEmpty(choiceId) || string.IsNullOrEmpty(optionId) || !choiceId.EndsWith("_" + action)) return false;
+        // Authored Day 1/2 nodes use eat/take, while generated later-day nodes use dayN_meal/dayN_medicine.
+        return optionId.EndsWith("_" + action) || (action == "meal" && optionId == "eat") || (action == "medicine" && optionId == "take");
     }
 
     private void CreateNotice()

@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore.LowLevel;
 
-/// <summary>Loads Malgun Gothic from Resources and applies a dynamic TMP font to every UI text.</summary>
+/// <summary>Loads Nanum Gothic from Resources and applies a dynamic TMP font to every UI text.</summary>
 public class KoreanFontBootstrap : MonoBehaviour
 {
     private static TMP_FontAsset koreanFont;
@@ -22,10 +22,10 @@ public class KoreanFontBootstrap : MonoBehaviour
     {
         if (koreanFont != null) return;
 
-        Font sourceFont = Resources.Load<Font>("Fonts/MalgunGothic");
+        Font sourceFont = Resources.Load<Font>("Fonts/NanumGothic-Regular");
         if (sourceFont == null)
         {
-            Debug.LogError("Korean source font was not found at Resources/Fonts/MalgunGothic.");
+            Debug.LogError("Korean source font was not found at Resources/Fonts/NanumGothic-Regular.");
             return;
         }
 
@@ -59,7 +59,7 @@ public class KoreanFontBootstrap : MonoBehaviour
             "식사 약복용 휴대폰 창문 돌아가기 0123456789 / :",
             out _);
 
-        Debug.Log("Korean TMP font loaded: Malgun Gothic");
+        Debug.Log("Korean TMP font loaded: Nanum Gothic");
     }
 
     private void Update()

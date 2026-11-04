@@ -1,0 +1,324 @@
+PASS: Single existing room bootstrap
+PASS: New architecture and furniture created
+PASS: No test-scene player or test controls
+PASS: Original new-game menu starts Day 1
+PASS: World interaction retained: Sleep
+PASS: World interaction retained: Phone
+PASS: World interaction retained: Window
+PASS: World interaction retained: Meal
+PASS: World interaction retained: Medicine
+PASS: World interaction retained: Door
+PASS: World interaction retained: Mirror
+PASS: World interaction retained: Shower
+PASS: World interaction retained: Tidy
+PASS: Unmatched object preserved: Medicine - Interact
+PASS: Original coordinates retained: Medicine - Interact
+PASS: Unmatched object preserved: Cup - Click to Tidy
+PASS: Original coordinates retained: Cup - Click to Tidy
+PASS: Unmatched object preserved: Laundry Basket
+PASS: Original coordinates retained: Laundry Basket
+PASS: Unmatched object preserved: Folded Clothes
+PASS: Original coordinates retained: Folded Clothes
+PASS: Unmatched object preserved: Curtain Left
+PASS: Original coordinates retained: Curtain Left
+PASS: Unmatched object preserved: Curtain Right
+PASS: Original coordinates retained: Curtain Right
+PASS: Unmatched object preserved: Curtain Rail
+PASS: Original coordinates retained: Curtain Rail
+PASS: Unmatched object preserved: Wall Notes
+PASS: Original coordinates retained: Wall Notes
+PASS: Unmatched object preserved: Floor Clothes
+PASS: Original coordinates retained: Floor Clothes
+PASS: Unmatched object preserved: Shoe Cabinet
+PASS: Original coordinates retained: Shoe Cabinet
+PASS: Unmatched object preserved: Door Mat
+PASS: Original coordinates retained: Door Mat
+PASS: Unmatched object preserved: Bathroom Tile Floor
+PASS: Original coordinates retained: Bathroom Tile Floor
+PASS: Unmatched object preserved: Wardrobe Body
+PASS: Original coordinates retained: Wardrobe Body
+PASS: Unmatched object preserved: Wardrobe Door Left
+PASS: Original coordinates retained: Wardrobe Door Left
+PASS: Unmatched object preserved: Wardrobe Door Right
+PASS: Original coordinates retained: Wardrobe Door Right
+PASS: Unmatched object preserved: Wardrobe Handle
+PASS: Original coordinates retained: Wardrobe Handle
+PASS: Unmatched object preserved: Plant Pot
+PASS: Original coordinates retained: Plant Pot
+PASS: Unmatched object preserved: Desk Lamp Stand
+PASS: Original coordinates retained: Desk Lamp Stand
+PASS: Unmatched object preserved: Desk Lamp Shade
+PASS: Original coordinates retained: Desk Lamp Shade
+PASS: Medicine remains at original coordinates
+PASS: Original spawn supported by new floor
+PASS: New wall blocks existing player capsule
+PASS: Meal raycast reaches preserved object above new desk
+PASS: Bathroom door controller present
+PASS: Bathroom door starts closed with open prompt
+PASS: Closed bathroom door blocks capsule from outside
+PASS: F interaction dispatch handles bathroom door locally
+PASS: Bathroom door opens and switches to close prompt
+PASS: Open bathroom door allows capsule passage
+PASS: Bathroom door closes from inside
+PASS: Closed bathroom door blocks capsule from inside
+PASS: Bathroom door reopens from inside
+PASS: Door waits instead of closing through player
+PASS: Door finishes closing after player clears doorway
+PASS: Bathroom door does not change story choices or daily actions
+PASS: Bathroom door left open for remaining route verification
+PASS: Additional object present: Phone - Click to Read
+PASS: Imported mesh used: Phone - Click to Read
+PASS: Additional object present: Meal - Interact
+PASS: Imported mesh used: Meal - Interact
+PASS: Additional object present: Sink - Click to Wash
+PASS: Imported mesh used: Sink - Click to Wash
+PASS: Additional object present: Mirror - Click to Look
+PASS: Imported mesh used: Mirror - Click to Look
+PASS: Additional object present: Bathroom Shelf
+PASS: Imported mesh used: Bathroom Shelf
+PASS: Additional object present: Shoes
+PASS: Imported mesh used: Shoes
+PASS: Additional object present: Refrigerator
+PASS: Imported mesh used: Refrigerator
+PASS: Additional object present: Trash Bin - Tidy
+PASS: Imported mesh used: Trash Bin - Tidy
+PASS: Additional object present: Washing Machine
+PASS: Imported mesh used: Washing Machine
+PASS: Additional object present: Bathroom Toilet
+PASS: Imported mesh used: Bathroom Toilet
+PASS: Additional object present: Toilet Paper Holder
+PASS: Imported mesh used: Toilet Paper Holder
+PASS: Additional object present: Toilet Brush
+PASS: Imported mesh used: Toilet Brush
+PASS: Additional object present: Bathroom Shower - Wash
+PASS: Imported mesh used: Bathroom Shower - Wash
+PASS: Additional object present: Bathroom Bathtub - Wash
+PASS: Imported mesh used: Bathroom Bathtub - Wash
+PASS: Additional object present: Bathroom Towel Rail
+PASS: Imported mesh used: Bathroom Towel Rail
+PASS: Additional object present: Bathroom Hand Soap
+PASS: Imported mesh used: Bathroom Hand Soap
+PASS: Additional object present: Bathroom Bath Mat
+PASS: Imported mesh used: Bathroom Bath Mat
+PASS: Refrigerator has no meal or other interaction target
+PASS: Only the food offers meal interaction
+PASS: Waste bin moved into gap beside entrance
+PASS: Chair rotated 180 degrees from previous layout
+PASS: Monitor rotated 90 degrees to face the chair
+PASS: Waste bin uses original tidy dialogue
+PASS: Actual waste basket normalized to standing height
+PASS: Viewer background sphere excluded from waste bin
+PASS: Shower uses original daily wash dialogue
+PASS: Pair of imported shoes placed
+PASS: Refrigerator has room-scale height and collision
+PASS: Bathroom entrance and central aisle remain walkable
+PASS: URP material on Geometry 0
+PASS: URP material on Geometry 1
+PASS: URP material on Geometry 2
+PASS: URP material on Geometry 3
+PASS: URP material on Geometry 4
+PASS: URP material on Geometry 4
+PASS: URP material on Geometry 4
+PASS: URP material on Geometry 5
+PASS: URP material on Geometry 6
+PASS: URP material on Geometry 3
+PASS: URP material on Geometry 5
+PASS: URP material on Geometry 7
+PASS: URP material on Geometry 8
+PASS: URP material on Geometry 9
+PASS: URP material on Geometry 10
+PASS: URP material on Geometry 11
+PASS: URP material on Geometry 11
+PASS: URP material on Geometry 11
+PASS: URP material on Geometry 11
+PASS: URP material on Geometry 11
+PASS: URP material on Geometry 11
+PASS: URP material on Geometry 12
+PASS: URP material on Geometry 13
+PASS: URP material on Geometry 0
+PASS: URP material on Geometry 12
+PASS: URP material on Geometry 13
+PASS: URP material on Geometry 14
+PASS: URP material on Geometry 3
+PASS: URP material on Geometry 4
+PASS: URP material on Geometry 3
+PASS: URP material on Geometry 0
+PASS: URP material on Geometry 1
+PASS: URP material on Geometry 2
+PASS: URP material on Geometry 3
+PASS: URP material on Geometry 4
+PASS: URP material on Geometry 5
+PASS: URP material on Geometry 6
+PASS: URP material on Geometry 7
+PASS: URP material on Geometry 8
+PASS: URP material on Geometry 9
+PASS: URP material on Geometry 10
+PASS: URP material on Geometry 11
+PASS: URP material on Geometry 12
+PASS: URP material on Geometry 13
+PASS: URP material on Geometry 14
+PASS: URP material on Geometry 15
+PASS: URP material on Geometry 0
+PASS: URP material on Geometry 1
+PASS: URP material on Geometry 2
+PASS: URP material on Geometry 3
+PASS: URP material on Geometry 4
+PASS: URP material on Geometry 5
+PASS: URP material on Geometry 6
+PASS: URP material on Geometry 7
+PASS: URP material on Geometry 8
+PASS: URP material on Geometry 9
+PASS: URP material on Geometry 10
+PASS: URP material on Geometry 11
+PASS: URP material on Geometry 12
+PASS: URP material on Geometry 13
+PASS: URP material on Geometry 14
+PASS: URP material on Geometry 15
+PASS: URP material on Refrigerator(Clone)
+PASS: URP material on Part_1
+PASS: URP material on Part_1
+PASS: URP material on Part_1
+PASS: URP material on Part_6
+PASS: URP material on Part_6
+PASS: URP material on Part_6
+PASS: URP material on Part_28
+PASS: URP material on Part_28
+PASS: URP material on Part_28
+PASS: URP material on Part_35
+PASS: URP material on Part_35
+PASS: URP material on Part_35
+PASS: URP material on Part_59
+PASS: URP material on Part_59
+PASS: URP material on Part_59
+PASS: URP material on Part_60
+PASS: URP material on Part_60
+PASS: URP material on Part_60
+PASS: URP material on Part_61
+PASS: URP material on Part_61
+PASS: URP material on Part_61
+PASS: URP material on Part_62
+PASS: URP material on Part_62
+PASS: URP material on Part_62
+PASS: URP material on Part_64
+PASS: URP material on Part_64
+PASS: URP material on Part_64
+PASS: URP material on Part_65
+PASS: URP material on Part_65
+PASS: URP material on Part_65
+PASS: URP material on Part_70
+PASS: URP material on Part_70
+PASS: URP material on Part_70
+PASS: URP material on Part_71
+PASS: URP material on Part_71
+PASS: URP material on Part_71
+PASS: URP material on Part_72
+PASS: URP material on Part_72
+PASS: URP material on Part_72
+PASS: URP material on Part_73
+PASS: URP material on Part_73
+PASS: URP material on Part_73
+PASS: URP material on Part_78
+PASS: URP material on Part_78
+PASS: URP material on Part_78
+PASS: URP material on Part_81
+PASS: URP material on Part_81
+PASS: URP material on Part_81
+PASS: URP material on Part_86
+PASS: URP material on Part_86
+PASS: URP material on Part_86
+PASS: URP material on Part_87
+PASS: URP material on Part_87
+PASS: URP material on Part_87
+PASS: URP material on Part_88
+PASS: URP material on Part_88
+PASS: URP material on Part_88
+PASS: URP material on Part_89
+PASS: URP material on Part_89
+PASS: URP material on Part_89
+PASS: URP material on Part_90
+PASS: URP material on Part_90
+PASS: URP material on Part_90
+PASS: URP material on Part_91
+PASS: URP material on Part_91
+PASS: URP material on Part_91
+PASS: URP material on Geometry 0
+PASS: URP material on Geometry 1
+PASS: URP material on Geometry 3
+PASS: URP material on Geometry 4
+PASS: URP material on Geometry 6
+PASS: URP material on Geometry 7
+PASS: URP material on Geometry 13
+PASS: URP material on Geometry 5
+PASS: URP material on Geometry 0
+PASS: URP material on Geometry 1
+PASS: URP material on Geometry 2
+PASS: URP material on Geometry 3
+PASS: URP material on Geometry 4
+PASS: URP material on Geometry 5
+PASS: URP material on Geometry 5
+PASS: URP material on Geometry 6
+PASS: URP material on Geometry 6
+PASS: URP material on Geometry 6
+PASS: URP material on Geometry 6
+PASS: URP material on Geometry 7
+PASS: URP material on Geometry 8
+PASS: URP material on Geometry 9
+PASS: URP material on Geometry 10
+PASS: URP material on Geometry 11
+PASS: URP material on Geometry 12
+PASS: URP material on Geometry 13
+PASS: URP material on Geometry 14
+PASS: URP material on Geometry 15
+PASS: URP material on Geometry 16
+PASS: URP material on Geometry 17
+PASS: URP material on Geometry 18
+PASS: URP material on Geometry 19
+PASS: URP material on Geometry 20
+PASS: URP material on Geometry 3
+PASS: URP material on Geometry 21
+PASS: URP material on Geometry 6
+PASS: URP material on Geometry 6
+PASS: URP material on Geometry 6
+PASS: URP material on Geometry 6
+PASS: URP material on Geometry 5
+PASS: URP material on Geometry 5
+PASS: URP material on Geometry 10
+PASS: URP material on Geometry 11
+PASS: URP material on Geometry 12
+PASS: URP material on Geometry 4
+PASS: URP material on Geometry 5
+PASS: URP material on Geometry 0
+PASS: URP material on Geometry 1
+PASS: URP material on Geometry 2
+PASS: URP material on Geometry 5
+PASS: Dialogue opens for Phone
+PASS: Dialogue opens for Window
+PASS: Dialogue opens for Mirror
+PASS: Dialogue opens for Shower
+PASS: Dialogue opens for Door
+PASS: Dialogue opens for Meal
+PASS: Meal choice changes original mental state
+PASS: Consumed meal hidden by original visual system
+PASS: Dialogue opens for Medicine
+PASS: Dialogue opens for Tidy
+PASS: Tidy choice empties waste bin contents
+PASS: New bed keeps original sleep/day progression
+PASS: Daily consumables restored on Day 2
+PASS: Next day restores new bento rather than legacy cube
+PASS: Next day restores daily waste bin contents
+PASS: Day 3 starts
+PASS: Existing save file can be loaded
+PASS: Saved day, mental state and choice history round-trip
+PASS: Mental depletion restores previous-day checkpoint
+PASS: Existing day progression reaches Day 3
+PASS: Existing day progression reaches Day 4
+PASS: Existing day progression reaches Day 5
+PASS: Existing day progression reaches Day 6
+PASS: Existing day progression reaches Day 7
+PASS: Existing day progression reaches Day 8
+PASS: Existing day progression reaches Day 9
+PASS: Dialogue opens for Door
+PASS: Day 9 choice animates new door using original ending controller (angle=52)
+PASS: Day 10 starts
+PASS: Dialogue opens for Door
+PASS: Day 10 original ending screen displayed

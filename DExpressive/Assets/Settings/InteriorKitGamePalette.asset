@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a81d813f2f07b34cb475b94403e51ee, type: 3}
+  m_Name: InteriorKitGamePalette
+  m_EditorClassIdentifier: Assembly-CSharp::InteriorKitGamePalette
+  wall: {fileID: 8495884510789162272, guid: acfa878d10f105b4080b09c24797ae6e, type: 3}
+  floor: {fileID: 4764271293648450378, guid: d20679105d0d2a940bc378651831b3f5, type: 3}
+  ceiling: {fileID: 9130398366364470241, guid: eb3847b8e82631f45bc9d81bd791c9ba, type: 3}
+  bed: {fileID: 4599039495416871983, guid: fb586cfb891d22e4fbf900038a076bd2, type: 3}
+  desk: {fileID: 6480161682864991335, guid: 85bb950621801304c8f2e83a2f6d12c7, type: 3}
+  chair: {fileID: 5285480987182005795, guid: 4415e29e2fae7b646bf61345d417e46f, type: 3}
+  rug: {fileID: 1523906043549847620, guid: a4910ea571074324ba37ef0fe1290b6e, type: 3}
+  window: {fileID: 1245215290861858566, guid: 28ae2a98334183443ab626ce84da6e95, type: 3}
+  door: {fileID: 844063039336223066, guid: 8f22c2843270c3e41b99e9d88d77168e, type: 3}
+  additionalProps: {fileID: 11400000, guid: bd46b0880c71445459ef158cef52f05a, type: 2}

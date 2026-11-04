@@ -11,6 +11,7 @@ public class RoomMoodController : MonoBehaviour
 
     private Light roomLight;
     private Renderer windowRenderer;
+    private Material windowMoodMaterial;
     private Image fadeImage;
     private TMP_Text rollbackLabel;
     private Image mentalOverlay;
@@ -33,7 +34,19 @@ public class RoomMoodController : MonoBehaviour
     private void Start()
     {
         roomLight = GameObject.Find("Prototype Room Light")?.GetComponent<Light>();
-        windowRenderer = GameObject.Find("Window - Click to Look Outside")?.GetComponent<Renderer>();
+        var windowObject = GameObject.Find("Window - Click to Look Outside");
+        windowRenderer = windowObject?.GetComponent<Renderer>();
+        if (windowObject != null && windowRenderer == null)
+        {
+            foreach (var renderer in windowObject.GetComponentsInChildren<Renderer>())
+            {
+                if (!renderer.enabled) continue;
+                foreach (var material in renderer.materials)
+                    if (material.name.StartsWith("glass")) { windowRenderer = renderer; windowMoodMaterial = material; break; }
+                if (windowMoodMaterial != null) break;
+            }
+        }
+        if (windowMoodMaterial == null && windowRenderer != null) windowMoodMaterial = windowRenderer.material;
         CreateTransitionUI();
         CreateMentalOverlay();
         ApplyMood();
@@ -59,7 +72,9 @@ public class RoomMoodController : MonoBehaviour
 
         Color dayWindow = isLaterDay ? new Color(0.20f, 0.31f, 0.56f) : new Color(0.20f, 0.55f, 0.85f);
         Color lowMentalWindow = new Color(0.10f, 0.12f, 0.23f);
-        windowRenderer.material.color = Color.Lerp(lowMentalWindow, dayWindow, mental);
+        Color windowColor = Color.Lerp(lowMentalWindow, dayWindow, mental);
+        windowColor.a = windowMoodMaterial.color.a;
+        windowMoodMaterial.color = windowColor;
 
         RenderSettings.ambientLight = Color.Lerp(new Color(0.04f, 0.05f, 0.10f), new Color(0.35f, 0.35f, 0.40f), mental);
 

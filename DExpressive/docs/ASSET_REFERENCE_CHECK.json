@@ -1,0 +1,359 @@
+{
+  "Generated": "2026-11-04",
+  "InventoryFiles": 1903,
+  "ScannedFiles": 313,
+  "CheckedGuidReferences": 3271,
+  "DuplicateGuids": [],
+  "CurrentAssetUnresolvedGuidReferences": [],
+  "LegacySampleUnresolvedGuidReferences": [
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/ShaderTexture_01.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/ShaderTexture_01.mat",
+      "GUID": "653344f037da57f49958942eab68b968"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/ShaderTexture_02.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Texture_wall_01.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Texture_wall_01.mat",
+      "GUID": "0a80144f10301974b957f127189b6200"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Texture_wall_12.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Texture_wall_12.mat",
+      "GUID": "0a80144f10301974b957f127189b6200"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Texture_wall_14.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Texture_wall_14.mat",
+      "GUID": "0a80144f10301974b957f127189b6200"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/2.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/2.mat",
+      "GUID": "39d929aac9335d34d8f7a98ca338dfc2"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_1.mat",
+      "GUID": "653344f037da57f49958942eab68b968"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_1.mat",
+      "GUID": "653344f037da57f49958942eab68b968"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_28.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_29.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_30.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_31.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_32.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_33.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_34.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_35.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_36.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_37.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_38.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_39.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_40.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_41.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_42.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_43.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_44.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_45.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_46.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_47.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_48.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_49.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_50.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_51.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_52.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    },
+    {
+      "File": "Assets/CuteMagic_Free/Cute Low Poly Furniture Pack Free/ShaderTexture/Materials/Base_color_53.mat",
+      "GUID": "8f472d7b8b0297e4495d5c41059c2739"
+    }
+  ],
+  "LegacyNote": "Pre-existing CuteMagic sample materials contain unresolved shader/texture references. Preserved unchanged; current game palette uses imported URP assets and explicit runtime URP materials.",
+  "PaletteReferences": [
+    {
+      "Palette": "InteriorKitGamePalette",
+      "Field": "wall",
+      "Path": "Assets/ThirdParty/InteriorKitV1/Prefabs/wall_2x3.prefab",
+      "GUID": "acfa878d10f105b4080b09c24797ae6e",
+      "Exists": true
+    },
+    {
+      "Palette": "InteriorKitGamePalette",
+      "Field": "floor",
+      "Path": "Assets/ThirdParty/InteriorKitV1/Prefabs/floor_2x2.prefab",
+      "GUID": "d20679105d0d2a940bc378651831b3f5",
+      "Exists": true
+    },
+    {
+      "Palette": "InteriorKitGamePalette",
+      "Field": "ceiling",
+      "Path": "Assets/ThirdParty/InteriorKitV1/Prefabs/ceiling_2x2.prefab",
+      "GUID": "eb3847b8e82631f45bc9d81bd791c9ba",
+      "Exists": true
+    },
+    {
+      "Palette": "InteriorKitGamePalette",
+      "Field": "bed",
+      "Path": "Assets/ThirdParty/InteriorKitV1/Prefabs/bed_double.prefab",
+      "GUID": "fb586cfb891d22e4fbf900038a076bd2",
+      "Exists": true
+    },
+    {
+      "Palette": "InteriorKitGamePalette",
+      "Field": "desk",
+      "Path": "Assets/ThirdParty/InteriorKitV1/Prefabs/office_desk.prefab",
+      "GUID": "85bb950621801304c8f2e83a2f6d12c7",
+      "Exists": true
+    },
+    {
+      "Palette": "InteriorKitGamePalette",
+      "Field": "chair",
+      "Path": "Assets/ThirdParty/InteriorKitV1/Prefabs/office_chair.prefab",
+      "GUID": "4415e29e2fae7b646bf61345d417e46f",
+      "Exists": true
+    },
+    {
+      "Palette": "InteriorKitGamePalette",
+      "Field": "rug",
+      "Path": "Assets/ThirdParty/InteriorKitV1/Prefabs/rug_2x3.prefab",
+      "GUID": "a4910ea571074324ba37ef0fe1290b6e",
+      "Exists": true
+    },
+    {
+      "Palette": "InteriorKitGamePalette",
+      "Field": "window",
+      "Path": "Assets/ThirdParty/InteriorKitV1/Prefabs/window_1200x1400.prefab",
+      "GUID": "28ae2a98334183443ab626ce84da6e95",
+      "Exists": true
+    },
+    {
+      "Palette": "InteriorKitGamePalette",
+      "Field": "door",
+      "Path": "Assets/ThirdParty/InteriorKitV1/Prefabs/door_interior.prefab",
+      "GUID": "8f22c2843270c3e41b99e9d88d77168e",
+      "Exists": true
+    },
+    {
+      "Palette": "InteriorKitGamePalette",
+      "Field": "additionalProps",
+      "Path": "Assets/Settings/AdditionalRoomPropsPalette.asset",
+      "GUID": "bd46b0880c71445459ef158cef52f05a",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "phone",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/Phone.prefab",
+      "GUID": "4a7b137a85bf5bd4b92ff62054c6e50c",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "meal",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/Bento.prefab",
+      "GUID": "ac939c1c242276c4dadc8aa729f28a6e",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "shoe",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/Shoe.prefab",
+      "GUID": "102503236e1de1d4f8aa8d89e7ed5766",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "fridge",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/Fridge.prefab",
+      "GUID": "18f2c8f887b1eeb4c85e5f0b42157a2f",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "vanity",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/Vanity.prefab",
+      "GUID": "dd9778b4d42c75c4d9029cbf438130cf",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "mirror",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/Mirror.prefab",
+      "GUID": "feed65a2e8fb94843a14b1ba37b150eb",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "toilet",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/Toilet.prefab",
+      "GUID": "a23f6aa1ff2286a4582d3afc69e14e53",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "paper",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/PaperHolder.prefab",
+      "GUID": "f4c436551cb5b7c4a9ecf831e58801da",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "brush",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/ToiletBrush.prefab",
+      "GUID": "98667aebfe8062848bbace04fb6d8010",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "shower",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/Shower.prefab",
+      "GUID": "26fd19f3bee5c704e94c3b78d80cfc4e",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "tub",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/Bathtub.prefab",
+      "GUID": "b6b87a64b4f7b0149b1df82344037a2b",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "towelRail",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/TowelRail.prefab",
+      "GUID": "dafc1852355d490448d27b692f02c294",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "soap",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/HandSoap.prefab",
+      "GUID": "99f4c160d12168444ad26748203033af",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "bathMat",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/BathMat.prefab",
+      "GUID": "f8a3e9e228c402140a08bf8b0da6b072",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "trashBin",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/TrashBin.prefab",
+      "GUID": "b87ec431fcfe2ef47bfb511395f1e1d9",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "shelf",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/Shelf.prefab",
+      "GUID": "9bb8f4769cd81b14d97b4d89ce5911f2",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "washingMachine",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/WashingMachine.prefab",
+      "GUID": "94fffcf989f8be749bb2354eba78c64f",
+      "Exists": true
+    }
+  ],
+  "Scope": "Visual prefab/material GUIDs and two runtime palettes. Does not replace Unity import/Play Mode checks."
+}

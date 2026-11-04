@@ -64,7 +64,7 @@ public class DailyRoomEvolution : MonoBehaviour
         prop.name = propName;
         prop.transform.position = position;
         prop.transform.localScale = scale;
-        prop.GetComponent<Renderer>().material.color = color;
+        prop.GetComponent<Renderer>().sharedMaterial = RuntimeRoomMaterial.Create(color);
         return prop;
     }
 }

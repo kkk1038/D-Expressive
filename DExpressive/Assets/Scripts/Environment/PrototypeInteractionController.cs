@@ -26,7 +26,7 @@ public class PrototypeInteractionController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             PrototypeInteractionTarget target = hit.collider.GetComponentInParent<PrototypeInteractionTarget>();
-            if (target != null) Interact(target.Type);
+            if (target != null && !target.TryInteractLocally()) Interact(target.Type);
         }
     }
 

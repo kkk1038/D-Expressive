@@ -88,12 +88,12 @@ public class FirstPersonPlayerController : MonoBehaviour
         {
             interactionHint.text = focusedTarget == null
                 ? "WASD: 이동    마우스: 시점 이동"
-                : "[ F ]  " + GetPrompt(focusedTarget.Type);
+                : "[ F ]  " + (focusedTarget.LocalPrompt ?? GetPrompt(focusedTarget.Type));
         }
 
         if (focusedTarget != null && Keyboard.current.fKey.wasPressedThisFrame)
         {
-            PrototypeInteractionController.Interact(focusedTarget.Type);
+            if (!focusedTarget.TryInteractLocally()) PrototypeInteractionController.Interact(focusedTarget.Type);
         }
     }
 

@@ -6,6 +6,15 @@ public class PrototypeInteractionTarget : MonoBehaviour
 
     [SerializeField] private InteractionType interactionType;
     public InteractionType Type => interactionType;
+    public string LocalPrompt => GetComponent<BathroomDoorController>()?.Prompt;
+
+    public bool TryInteractLocally()
+    {
+        var door = GetComponent<BathroomDoorController>();
+        if (!door) return false;
+        door.Toggle();
+        return true;
+    }
 
 
     public void SetType(InteractionType value)
