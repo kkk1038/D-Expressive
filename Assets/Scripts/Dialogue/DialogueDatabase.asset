@@ -15,17 +15,12 @@ MonoBehaviour:
   nodes:
   - nodeId: day1_start
     speakerName: 1일 차
-    dialogueText: 아침이다. 휴대폰에 친구의 메시지가 와 있다.
+    dialogueText: 아침이다. 핸드폰이나 볼까
     choices:
     - optionId: reply
-      buttonText: 답장하기
+      buttonText: 진행하기
       mentalChange: 10
       nextStoryId: friend_conversation
-      nextDialogueNodeId: 
-    - optionId: ignore
-      buttonText: 무시하기
-      mentalChange: -20
-      nextStoryId: friend_message_ignored
       nextDialogueNodeId: 
   - nodeId: day2_start
     speakerName: 2일 차
@@ -43,78 +38,303 @@ MonoBehaviour:
       nextDialogueNodeId: 
   - nodeId: day1_phone
     speakerName: 휴대폰
-    dialogueText: 읽지 않은 메시지가 하나 있다. 아직 답할 자신은 없다.
+    dialogueText: 부모님에게 연락이 와 있다.
     choices:
-    - optionId: close_phone
-      buttonText: 휴대폰 내려놓기
+    - optionId: check_parent_message
+      buttonText: 확인한다
       mentalChange: 0
       nextStoryId: day1_phone_checked
-      nextDialogueNodeId: 
+      nextDialogueNodeId: day1_parent_message
+    - optionId: do_not_check_parent_message
+      buttonText: 안한다
+      mentalChange: -5
+      nextStoryId: day1_phone_not_checked
+      nextDialogueNodeId:
+  - nodeId: day1_parent_message
+    speakerName: 부모님
+    dialogueText: 잘 지내니? 연락 좀 하고 살자
+    choices:
+    - optionId: reply_to_parent
+      buttonText: 답장하기
+      mentalChange: 0
+      nextStoryId: day1_parent_replied
+      nextDialogueNodeId: day1_parent_reply
+    - optionId: ignore_parent_message
+      buttonText: 무시하기
+      mentalChange: 0
+      nextStoryId: day1_parent_message_ignored
+      nextDialogueNodeId:
+  - nodeId: day1_parent_reply
+    speakerName: 나
+    dialogueText: 자고 있었어...
+    choices:
+    - optionId: close_parent_reply
+      buttonText: 확인
+      mentalChange: 0
+      nextStoryId: day1_parent_reply_finished
+      nextDialogueNodeId:
   - nodeId: day1_meal
     speakerName: 식사
-    dialogueText: 음식은 식었지만, 조금이라도 먹는 편이 나을지도 모른다.
+    dialogueText: 밥..먹어야지..
     choices:
     - optionId: eat
-      buttonText: 먹기
-      mentalChange: 8
+      buttonText: 먹는다
+      mentalChange: 0
       nextStoryId: day1_meal_eaten
-      nextDialogueNodeId: 
-    - optionId: skip
-      buttonText: 먹지 않기
-      mentalChange: -10
-      nextStoryId: day1_meal_skipped
-      nextDialogueNodeId: 
+      nextDialogueNodeId:
   - nodeId: day1_medicine
     speakerName: 약
-    dialogueText: 책상 위에 약병이 놓여 있다.
+    dialogueText: 내가 그정돈가..?
     choices:
-    - optionId: take
-      buttonText: 약 먹기
-      mentalChange: 5
-      nextStoryId: day1_medicine_taken
-      nextDialogueNodeId: 
-    - optionId: avoid
-      buttonText: 약 치우기
-      mentalChange: -8
-      nextStoryId: day1_medicine_avoided
-      nextDialogueNodeId: 
+    - optionId: put_away
+      buttonText: 약을 치운다
+      mentalChange: -20
+      nextStoryId: day1_medicine_put_away
+      nextDialogueNodeId:
+  - nodeId: day1_tidy
+    speakerName: 청소
+    dialogueText: 쓰래기가 쌓여있네..치울까
+    choices:
+    - optionId: day1_tidy
+      buttonText: 조금이라도 치우자
+      mentalChange: 4
+      nextStoryId: day1_tidy
+      nextDialogueNodeId:
+    - optionId: day1_tidy_skip
+      buttonText: 귀찮아...
+      mentalChange: -1
+      nextStoryId: day1_tidy_skip
+      nextDialogueNodeId:
+  - nodeId: day1_shower
+    speakerName: 세면대
+    dialogueText: 세수라도 하자
+    choices:
+    - optionId: day1_shower_confirm
+      buttonText: 확인
+      mentalChange: 0
+      nextStoryId: day1_shower_confirmed
+      nextDialogueNodeId:
+  - nodeId: day1_mirror
+    speakerName: 거울
+    dialogueText: 정신차리자..
+    choices:
+    - optionId: day1_mirror_confirm
+      buttonText: 확인
+      mentalChange: 0
+      nextStoryId: day1_mirror_confirmed
+      nextDialogueNodeId:
   - nodeId: day2_meal
     speakerName: 식사
-    dialogueText: 어제부터 제대로 먹지 못했다.
+    dialogueText: 귀찮아..
     choices:
-    - optionId: eat
-      buttonText: 먹기
-      mentalChange: 6
+    - optionId: day2_meal
+      buttonText: 먹는다
+      mentalChange: 5
       nextStoryId: day2_meal_eaten
-      nextDialogueNodeId: 
-    - optionId: skip
+      nextDialogueNodeId:
+    - optionId: day2_meal_skip
       buttonText: 먹지 않기
-      mentalChange: -12
+      mentalChange: -5
       nextStoryId: day2_meal_skipped
-      nextDialogueNodeId: 
+      nextDialogueNodeId:
   - nodeId: day2_medicine
     speakerName: 약
-    dialogueText: 스스로를 돌보는 일도 아직은 버겁다.
+    dialogueText: 난 심하지 않아
     choices:
-    - optionId: take
-      buttonText: 약 먹기
-      mentalChange: 4
-      nextStoryId: day2_medicine_taken
-      nextDialogueNodeId: 
-    - optionId: avoid
-      buttonText: 약 치우기
-      mentalChange: -10
+    - optionId: day2_medicine_skip
+      buttonText: 약을 먹지 않기
+      mentalChange: -20
       nextStoryId: day2_medicine_avoided
-      nextDialogueNodeId: 
+      nextDialogueNodeId:
   - nodeId: day2_phone
     speakerName: 휴대폰
-    dialogueText: 새 메시지는 없다. 오늘은 이 침묵이 더 무겁게 느껴진다.
+    dialogueText: 부모님에게 연락이 와 있다
     choices:
-    - optionId: close_phone
-      buttonText: 휴대폰 내려놓기
-      mentalChange: -3
+    - optionId: day2_check_parent_message
+      buttonText: 확인한다
+      mentalChange: 0
       nextStoryId: day2_phone_checked
-      nextDialogueNodeId: 
+      nextDialogueNodeId: day2_parent_message
+    - optionId: day2_ignore_parent_message
+      buttonText: 안한다
+      mentalChange: -20
+      nextStoryId: day2_phone_not_checked
+      nextDialogueNodeId:
+  - nodeId: day2_parent_message
+    speakerName: 부모님
+    dialogueText: 슬슬 정신차리고 살아야지
+    choices:
+    - optionId: day2_parent_acknowledge
+      buttonText: 알았어요
+      mentalChange: 0
+      nextStoryId: day2_parent_acknowledged
+      nextDialogueNodeId:
+    - optionId: day2_parent_self_doubt
+      buttonText: 날 한심하게 생각하겠지..
+      mentalChange: -20
+      nextStoryId: day2_parent_self_doubt
+      nextDialogueNodeId:
+  - nodeId: day2_tidy
+    speakerName: 청소
+    dialogueText: 지금 해야될까?
+    choices:
+    - optionId: day2_tidy_skip
+      buttonText: "..."
+      mentalChange: 0
+      nextStoryId: day2_tidy_deferred
+      nextDialogueNodeId:
+  - nodeId: day2_shower
+    speakerName: 세면대
+    dialogueText: "..."
+    choices:
+    - optionId: day2_shower
+      buttonText: 세수하기
+      mentalChange: 0
+      nextStoryId: day2_shower_done
+      nextDialogueNodeId:
+  - nodeId: day2_mirror
+    speakerName: 거울
+    dialogueText: 난 정상이야
+    choices:
+    - optionId: day2_mirror
+      buttonText: 확인
+      mentalChange: 0
+      nextStoryId: day2_mirror_confirmed
+      nextDialogueNodeId:
+  - nodeId: day3_shower_1
+    speakerName: 세면대
+    dialogueText: 물을 틀지만 한동안 멍하니 바라본다.
+    choices:
+    - optionId: day3_shower_first
+      buttonText: 세수부터해야겠다
+      mentalChange: 3
+      nextStoryId: day3_shower_first_done
+      nextDialogueNodeId:
+  - nodeId: day3_shower_2
+    speakerName: 세면대
+    dialogueText: 물을 틀지만 한동안 멍하니 바라본다.
+    choices:
+    - optionId: day3_shower_second
+      buttonText: 세수라도 하자
+      mentalChange: 2
+      nextStoryId: day3_shower_second_done
+      nextDialogueNodeId:
+    - optionId: day3_shower_second_skip
+      buttonText: 물을 끈다
+      mentalChange: -5
+      nextStoryId: day3_shower_second_skipped
+      nextDialogueNodeId:
+  - nodeId: day3_shower_3
+    speakerName: 세면대
+    dialogueText: 세면대에 서서 가만히 바라본다
+    choices:
+    - optionId: day3_shower_third
+      buttonText: 쉬자..
+      mentalChange: 0
+      nextStoryId: day3_shower_third_done
+      nextDialogueNodeId:
+  - nodeId: day3_meal_1
+    speakerName: 식사
+    dialogueText: 밥은 먹어야지
+    choices:
+    - optionId: day3_meal_first
+      buttonText: 식사 하기
+      mentalChange: 3
+      nextStoryId: day3_meal_first_done
+      nextDialogueNodeId:
+  - nodeId: day3_meal_2
+    speakerName: 식사
+    dialogueText: 입맛이 없어
+    choices:
+    - optionId: day3_meal_second
+      buttonText: 한입 먹는다
+      mentalChange: 2
+      nextStoryId: day3_meal_second_done
+      nextDialogueNodeId:
+    - optionId: day3_meal_second_skip
+      buttonText: 안먹는다
+      mentalChange: -5
+      nextStoryId: day3_meal_second_skipped
+      nextDialogueNodeId:
+  - nodeId: day3_meal_3
+    speakerName: 식사
+    dialogueText: 먹고싶지 않아
+    choices:
+    - optionId: day3_meal_third
+      buttonText: 확인
+      mentalChange: 0
+      nextStoryId: day3_meal_third_done
+      nextDialogueNodeId:
+  - nodeId: day3_phone_1
+    speakerName: 휴대폰
+    dialogueText: 부모님에게 연락이 와있다
+    choices:
+    - optionId: day3_phone_first_check
+      buttonText: 확인하기
+      mentalChange: 0
+      nextStoryId: day3_phone_first_checked
+      nextDialogueNodeId: day3_phone_parent_1
+    - optionId: day3_phone_first_ignore
+      buttonText: 무시하기
+      mentalChange: 0
+      nextStoryId: day3_phone_first_ignored
+      nextDialogueNodeId:
+  - nodeId: day3_phone_parent_1
+    speakerName: 부모님
+    dialogueText: 잘 챙겨 먹고 다녀라
+    choices:
+    - optionId: day3_phone_first_reply
+      buttonText: 짧게 답장한다
+      mentalChange: 3
+      nextStoryId: day3_phone_first_replied
+      nextDialogueNodeId:
+    - optionId: day3_phone_first_parent_ignore
+      buttonText: 무시한다
+      mentalChange: -5
+      nextStoryId: day3_phone_first_parent_ignored
+      nextDialogueNodeId:
+  - nodeId: day3_phone_2
+    speakerName: 휴대폰
+    dialogueText: 부모님에게 연락이 와있다
+    choices:
+    - optionId: day3_phone_second_check
+      buttonText: 확인하기
+      mentalChange: 0
+      nextStoryId: day3_phone_second_checked
+      nextDialogueNodeId: day3_phone_parent_2
+    - optionId: day3_phone_second_ignore
+      buttonText: 무시하기
+      mentalChange: 0
+      nextStoryId: day3_phone_second_ignored
+      nextDialogueNodeId:
+  - nodeId: day3_phone_parent_2
+    speakerName: 부모님
+    dialogueText: 잘 챙겨 먹고 다녀라
+    choices:
+    - optionId: day3_phone_second_reply
+      buttonText: 짧게 답장한다
+      mentalChange: 3
+      nextStoryId: day3_phone_second_replied
+      nextDialogueNodeId:
+    - optionId: day3_phone_second_parent_ignore
+      buttonText: 무시한다
+      mentalChange: -5
+      nextStoryId: day3_phone_second_parent_ignored
+      nextDialogueNodeId:
+  - nodeId: day3_phone_3
+    speakerName: 휴대폰
+    dialogueText: 부모님에게 연락이 와있다
+    choices:
+    - optionId: day3_phone_third_ignore
+      buttonText: 무시하기
+      mentalChange: -5
+      nextStoryId: day3_phone_third_ignored
+      nextDialogueNodeId:
+    - optionId: day3_phone_third_power_off
+      buttonText: 전원을 끈다
+      mentalChange: -10
+      nextStoryId: day3_phone_third_powered_off
+      nextDialogueNodeId:
   - nodeId: day1_window
     speakerName: 창문
     dialogueText: 아침 빛이 방 안으로 들어온다. 밖의 도시는 아무 일 없다는 듯 움직인다.

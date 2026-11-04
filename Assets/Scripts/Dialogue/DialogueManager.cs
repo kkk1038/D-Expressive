@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -28,6 +29,13 @@ public class DialogueManager : MonoBehaviour
         ShowNode(nodeId);
     }
 
+    /// <summary>Ends a pending dialogue without recording a choice.</summary>
+    public void EndDialogue()
+    {
+        currentNode = null;
+        if (choiceUI != null) choiceUI.HideChoices();
+    }
+
     private void ShowNode(string nodeId)
     {
         if (!dialogueDatabase.TryGetNode(nodeId, out currentNode))
@@ -36,8 +44,10 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        bool heavy = (GameStateManager.Instance.CurrentState.day == 5 || GameStateManager.Instance.CurrentState.day == 6) &&
+            (currentNode.nodeId.EndsWith("_mirror") || currentNode.nodeId.EndsWith("_medicine") || currentNode.nodeId.EndsWith("_meal") || currentNode.nodeId.EndsWith("_phone"));
         choiceUI.ShowDialogue(currentNode.speakerName, currentNode.dialogueText,
-            currentNode.choices, SelectDialogueChoice);
+            currentNode.choices, SelectDialogueChoice, heavy);
     }
 
     private void SelectDialogueChoice(int optionIndex)
@@ -57,6 +67,16 @@ public class DialogueManager : MonoBehaviour
         choiceManager.SelectChoice(currentNode.nodeId, choice.optionId,
             choice.mentalChange, nextStoryId);
 
+        bool heavy = (GameStateManager.Instance.CurrentState.day == 5 || GameStateManager.Instance.CurrentState.day == 6) &&
+            (currentNode.nodeId.EndsWith("_mirror") || currentNode.nodeId.EndsWith("_medicine") || currentNode.nodeId.EndsWith("_meal") || currentNode.nodeId.EndsWith("_phone"));
+        if (heavy)
+        {
+            string nextNode = choice.nextDialogueNodeId;
+            currentNode = null;
+            StartCoroutine(ContinueAfterHeavyPause(nextNode));
+            return;
+        }
+
         if (string.IsNullOrWhiteSpace(choice.nextDialogueNodeId))
         {
             currentNode = null;
@@ -64,5 +84,11 @@ public class DialogueManager : MonoBehaviour
         }
 
         ShowNode(choice.nextDialogueNodeId);
+    }
+
+    private IEnumerator ContinueAfterHeavyPause(string nextNodeId)
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        if (!string.IsNullOrWhiteSpace(nextNodeId)) ShowNode(nextNodeId);
     }
 }

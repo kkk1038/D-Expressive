@@ -8,6 +8,7 @@ public class GameStateData
 {
     public int day = 1;
     public int mentalState = 100;
+    public int dayStartMentalState = 100;
 
     public string storyNodeId = "day1_start";
 

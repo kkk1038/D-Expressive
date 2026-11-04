@@ -1,28 +1,39 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>Creates a runtime-only first-person capsule in the prototype room.</summary>
 public class FirstPersonPlayerBootstrap : MonoBehaviour
 {
+    // Bedside viewpoint matching the intended opening composition: the desk,
+    // wardrobe and morning light are in front of the player after waking.
+    public static readonly Vector3 WakeUpPosition = new(-2.15f, 0.05f, 3.68f);
+    public const float WakeUpYaw = 102f;
+
     private void Awake()
     {
         if (!Application.isPlaying) return;
 
         GameObject player = new GameObject("First Person Player (Runtime Only)");
-        player.transform.position = new Vector3(0f, 0.05f, -0.8f);
+        player.transform.position = WakeUpPosition;
+        player.transform.rotation = Quaternion.Euler(0f, WakeUpYaw, 0f);
         CharacterController controller = player.AddComponent<CharacterController>();
         controller.height = 1.8f;
         controller.radius = 0.32f;
         controller.center = new Vector3(0f, 0.9f, 0f);
 
         Camera camera = Camera.main;
+        if (camera == null) return;
         camera.transform.SetParent(player.transform);
         camera.transform.localPosition = new Vector3(0f, 1.6f, 0f);
         camera.transform.localRotation = Quaternion.identity;
+        camera.clearFlags = CameraClearFlags.SolidColor;
+        camera.backgroundColor = new Color(0.07f, 0.08f, 0.12f);
 
         FirstPersonPlayerController playerController = player.AddComponent<FirstPersonPlayerController>();
         SetPrivateField(playerController, "playerCamera", camera);
         SetPrivateField(playerController, "interactionHint", CreateHint());
+        CreateCrosshair();
     }
 
     private static TMP_Text CreateHint()
@@ -43,6 +54,20 @@ public class FirstPersonPlayerBootstrap : MonoBehaviour
         hint.fontSize = 20;
         hint.color = Color.white;
         return hint;
+    }
+
+    private static void CreateCrosshair()
+    {
+        Canvas canvas = FindFirstObjectByType<Canvas>();
+        if (canvas == null) return;
+        GameObject crosshair = new GameObject("Interaction Crosshair", typeof(RectTransform), typeof(Image));
+        crosshair.transform.SetParent(canvas.transform, false);
+        RectTransform rect = crosshair.GetComponent<RectTransform>();
+        rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.sizeDelta = new Vector2(7f, 7f);
+        Image image = crosshair.GetComponent<Image>();
+        image.color = new Color(1f, 1f, 1f, 0.72f);
+        image.raycastTarget = false;
     }
 
     // Keeps setup in one file without exposing prototype-only configuration in the Inspector.
