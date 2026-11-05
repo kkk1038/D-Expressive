@@ -1,8 +1,0 @@
-Assets/ThirdParty/AdditionalProps/SourceFBX\BathroomProps\source\SM_Bathroom_Props_01.fbx
-SM_Bathroom_Props_01(Clone) bounds=Center: (0.00, 1.21, 0.00), Extents: (1.25, 1.21, 1.25) materials=Material 3,Material 1,Material 2
-  Material 3 color=RGBA(0.906, 0.906, 0.906, 1.000) texture=NONE
-  Material 1 color=RGBA(0.906, 0.906, 0.906, 1.000) texture=NONE
-  Material 2 color=RGBA(0.906, 0.906, 0.906, 1.000) texture=NONE
-Assets/ThirdParty/AdditionalProps/SourceFBX\Refrigerator\source\Refrigerator.fbx
-Refrigerator(Clone) bounds=Center: (0.09, 1.03, 0.07), Extents: (0.54, 1.04, 0.32) materials=Refrigerator_Albedo
-  Refrigerator_Albedo color=RGBA(1.000, 1.000, 1.000, 1.000) texture=NONE

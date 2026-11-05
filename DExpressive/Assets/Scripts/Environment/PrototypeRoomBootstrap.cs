@@ -70,8 +70,12 @@ public class PrototypeRoomBootstrap : MonoBehaviour
         CreateBlock(room, "Chair Seat", new Vector3(2.45f, 0.62f, 3.95f), new Vector3(1.05f, 0.18f, 1.0f), metal);
         CreateBlock(room, "Chair Back", new Vector3(2.45f, 1.25f, 4.36f), new Vector3(1.05f, 1.1f, 0.14f), new Color(0.20f, 0.22f, 0.27f));
         CreateBlock(room, "Chair Leg", new Vector3(2.45f, 0.3f, 3.95f), new Vector3(0.12f, 0.65f, 0.12f), metal);
-        GameObject phone = CreateBlock(room, "Phone - Click to Read", new Vector3(2.5f, 1.2f, 5.5f), new Vector3(0.45f, 0.08f, 0.78f), new Color(0.04f, 0.06f, 0.08f));
+        // Keep the phone beside the pillow: it is the first object the player
+        // can naturally notice after waking, rather than another desk prop.
+        GameObject phone = CreateBlock(room, "Phone - Click to Read", new Vector3(-2.88f, 1.28f, 4.16f), new Vector3(0.38f, 0.07f, 0.68f), new Color(0.025f, 0.035f, 0.055f));
         phone.AddComponent<PrototypeInteractionTarget>().SetType(PrototypeInteractionTarget.InteractionType.Phone);
+        // A lit screen keeps the small prop readable against the dark bedding.
+        CreateBlock(phone.transform, "Phone Screen", new Vector3(-2.88f, 1.325f, 4.16f), new Vector3(0.29f, 0.012f, 0.52f), new Color(0.30f, 0.70f, 0.92f));
         GameObject meal = CreateBlock(room, "Meal - Interact", new Vector3(1.75f, 1.22f, 5.5f), new Vector3(0.42f, 0.12f, 0.42f), new Color(0.85f, 0.42f, 0.15f));
         meal.AddComponent<PrototypeInteractionTarget>().SetType(PrototypeInteractionTarget.InteractionType.Meal);
         GameObject medicine = CreateBlock(room, "Medicine - Interact", new Vector3(3.25f, 1.26f, 5.5f), new Vector3(0.22f, 0.22f, 0.22f), new Color(0.94f, 0.94f, 0.96f));
@@ -310,6 +314,7 @@ public class PrototypeRoomBootstrap : MonoBehaviour
         systems.AddComponent<RoomActionVisuals>();
         systems.AddComponent<DayPresentationController>();
         systems.AddComponent<SleepTransitionController>();
+        systems.AddComponent<WakeUpTransitionController>();
         systems.AddComponent<DoorEndingController>();
         systems.AddComponent<DailyRoomEvolution>();
         PrototypeGameUI gameUI = systems.AddComponent<PrototypeGameUI>();

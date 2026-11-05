@@ -15,6 +15,9 @@ public class RoomMoodController : MonoBehaviour
     private Image fadeImage;
     private TMP_Text rollbackLabel;
     private Image mentalOverlay;
+    private TMP_Text mentalWarningLabel;
+    private float day7RecoveryProgress;
+    private bool wasDay7Recovering;
 
     private void Awake()
     {
@@ -57,12 +60,26 @@ public class RoomMoodController : MonoBehaviour
         ApplyMood();
     }
 
-    private void ApplyMood()
+private void ApplyMood()
     {
         if (GameStateManager.Instance == null || roomLight == null || windowRenderer == null) return;
 
         GameStateData state = GameStateManager.Instance.CurrentState;
-        float mental = state.mentalState / 100f;
+        int effectMental = state.dayStartMentalState > 0 ? state.dayStartMentalState : state.mentalState;
+        if (state.day == 6) effectMental = 10;
+        bool isDay7Recovering = state.day == 7 && state.storyFlags.Contains("day7_contact_recovery");
+        if (isDay7Recovering)
+        {
+            day7RecoveryProgress = Mathf.MoveTowards(day7RecoveryProgress, 1f, Time.unscaledDeltaTime / 5f);
+        }
+        else if (wasDay7Recovering)
+        {
+            day7RecoveryProgress = 0f;
+        }
+        wasDay7Recovering = isDay7Recovering;
+
+        float displayedMental = Mathf.Lerp(effectMental, 100f, day7RecoveryProgress);
+        float mental = displayedMental / 100f;
         bool isLaterDay = state.day >= 2;
 
         Color brightLight = isLaterDay ? new Color(0.66f, 0.70f, 0.92f) : new Color(1f, 0.78f, 0.56f);
@@ -78,11 +95,7 @@ public class RoomMoodController : MonoBehaviour
 
         RenderSettings.ambientLight = Color.Lerp(new Color(0.04f, 0.05f, 0.10f), new Color(0.35f, 0.35f, 0.40f), mental);
 
-        if (mentalOverlay != null)
-        {
-            float distress = Mathf.Clamp01((45f - state.mentalState) / 45f);
-            mentalOverlay.color = new Color(0.24f, 0.02f, 0.08f, distress * 0.32f);
-        }
+        ApplyMentalStateEffect(Mathf.RoundToInt(displayedMental), isDay7Recovering);
     }
 
     private void PlayRollbackTransition()
@@ -155,6 +168,55 @@ public class RoomMoodController : MonoBehaviour
         rect.offsetMin = Vector2.zero; rect.offsetMax = Vector2.zero;
         mentalOverlay = overlay.GetComponent<Image>();
         mentalOverlay.raycastTarget = false;
+
+        GameObject warningObject = new GameObject("Mental State Warning", typeof(RectTransform), typeof(TextMeshProUGUI));
+        warningObject.transform.SetParent(overlay.transform, false);
+        RectTransform warningRect = warningObject.GetComponent<RectTransform>();
+        warningRect.anchorMin = new Vector2(0.5f, 1f);
+        warningRect.anchorMax = new Vector2(0.5f, 1f);
+        warningRect.pivot = new Vector2(0.5f, 1f);
+        warningRect.anchoredPosition = new Vector2(0f, -95f);
+        warningRect.sizeDelta = new Vector2(700f, 50f);
+        mentalWarningLabel = warningObject.GetComponent<TextMeshProUGUI>();
+        mentalWarningLabel.alignment = TextAlignmentOptions.Center;
+        mentalWarningLabel.fontSize = 22;
+        mentalWarningLabel.fontStyle = FontStyles.Bold;
+        mentalWarningLabel.raycastTarget = false;
+    }
+
+    private void ApplyMentalStateEffect(int mentalState, bool hideWarning)
+    {
+        if (mentalOverlay == null) return;
+
+        // These thresholds are deliberately discrete: each drop is immediately legible.
+        Color overlayColor = Color.clear;
+        string warning = string.Empty;
+        if (mentalState <= 10)
+        {
+            float pulse = 0.04f * Mathf.Sin(Time.unscaledTime * 3.5f);
+            overlayColor = new Color(0.05f, 0f, 0.02f, 0.60f + pulse);
+            warning = "정신력이 바닥에 닿았다";
+        }
+        else if (mentalState <= 30)
+        {
+            float pulse = 0.025f * Mathf.Sin(Time.unscaledTime * 2.2f);
+            overlayColor = new Color(0.28f, 0.01f, 0.06f, 0.38f + pulse);
+            warning = "몸과 생각이 무겁다";
+        }
+        else if (mentalState <= 50)
+        {
+            overlayColor = new Color(0.08f, 0.12f, 0.24f, 0.22f);
+            warning = "조금씩 지쳐 간다";
+        }
+
+        mentalOverlay.color = overlayColor;
+        if (mentalWarningLabel != null)
+        {
+            mentalWarningLabel.text = hideWarning ? string.Empty : warning;
+            mentalWarningLabel.color = mentalState <= 10
+                ? new Color(1f, 0.48f, 0.48f, 0.9f)
+                : new Color(0.86f, 0.82f, 0.88f, 0.82f);
+        }
     }
 
     private void SetFadeAlpha(float alpha)

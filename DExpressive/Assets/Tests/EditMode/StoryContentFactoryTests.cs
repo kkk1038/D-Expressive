@@ -26,12 +26,12 @@ public class StoryContentFactoryTests
     }
 
     [Test]
-    public void DayNineAndTenHaveTheEndingChoices()
+    public void DayNineWaitsAndDayTenHasTheEndingChoice()
     {
         TryCreate("day9_door", out object dayNineDoor);
         TryCreate("day10_door", out object dayTenDoor);
 
-        Assert.That(FirstChoiceOption(dayNineDoor), Is.EqualTo("day9_open_door"));
+        Assert.That(FirstChoiceOption(dayNineDoor), Is.EqualTo("day9_door_wait"));
         Assert.That(FirstChoiceOption(dayTenDoor), Is.EqualTo("day10_step_out"));
     }
 

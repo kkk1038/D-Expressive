@@ -1,0 +1,33 @@
+PASS: Paper cluster replaces original cup
+PASS: Medicine bag and three dose packets replace block
+PASS: Papers retain Tidy interaction
+PASS: Bag retains Medicine interaction
+PASS: Interaction collider: Cup - Click to Tidy
+PASS: Prop rests on tabletop: Cup - Click to Tidy
+PASS: First-person F ray selects: Cup - Click to Tidy
+PASS: URP material: Visual
+PASS: Interaction collider: Medicine - Interact
+PASS: Prop rests on tabletop: Medicine - Interact
+PASS: First-person F ray selects: Medicine - Interact
+PASS: URP material: 구성 요소#46
+PASS: URP material: 구성 요소#46
+PASS: URP material: 구성 요소#48
+PASS: URP material: 구성 요소#48
+PASS: URP material: 구성 요소#49
+PASS: URP material: 구성 요소#49
+PASS: URP material: 구성 요소#49
+PASS: URP material: 구성 요소#50
+PASS: URP material: 구성 요소#50
+PASS: URP material: 구성 요소#50
+PASS: Paper atlas texture retained
+PASS: Pharmacy printing and dose labels retained
+PASS: Existing dialogue opens: Tidy
+PASS: Existing clean choice removes papers and bin contents together
+PASS: Next day restores papers and medicine
+PASS: Existing dialogue opens: Medicine
+PASS: Existing take-medicine choice hides bag
+PASS: Medicine visible on a fresh day
+PASS: Existing saved state loads
+PASS: Load restores medicine consumption without hiding papers
+PASS: Existing dialogue opens: Medicine
+PASS: Skip medicine keeps the new bag visible

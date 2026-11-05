@@ -1,32 +1,27 @@
-# Unity generated folders
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
-/MemoryCaptures/
-/Recordings/
+# Unity-generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+MemoryCaptures/
+Recordings/
+
+# Unity editor and generated project files
 .vs/
-.idea/
 .vscode/
 *.csproj
 *.sln
 *.slnx
-*.suo
 *.user
+*.userprefs
 *.pidb
 *.booproj
-*.opendb
-*.VC.db
-*.log
+*.unityproj
 *.tmp
+
+# OS files
 .DS_Store
 Thumbs.db
-*.zip
-*.7z
-*.unitypackage
-dexpressive_save.json
-Player.log
-Player-prev.log

@@ -1,0 +1,361 @@
+PASS: One master bootstrap
+PASS: Imported architecture and furniture active
+PASS: No independent test player in main game
+PASS: Master wake-up controller retained
+PASS: Master mental-state BGM controller retained
+PASS: Master interaction sounds retained
+PASS: Master audio resource loads: Audio/BGM/Melancholic_Room_Normal
+PASS: Master audio resource loads: Audio/BGM/Melancholic_Room_Mental_50
+PASS: Master audio resource loads: Audio/BGM/Melancholic_Room_Mental_10
+PASS: Master audio resource loads: Audio/BGM/Peaceful_Room_Normal
+PASS: Master audio resource loads: Audio/SFX/Phone_Vibration_Notification
+PASS: Master audio resource loads: Audio/SFX/Meal_Cutlery_In_Ceramic
+PASS: Master audio resource loads: Audio/SFX/Shower_Real_Water
+PASS: Master audio resource loads: Audio/SFX/Door_Key_In_Lock
+PASS: Integrated object: Meal - Interact
+PASS: Integrated object: Phone - Click to Read
+PASS: Integrated object: Trash Bin - Tidy
+PASS: Integrated object: Refrigerator
+PASS: Integrated object: Bathroom Door
+PASS: Integrated object: Interior Kit Office Chair
+PASS: Interaction retained: Sleep
+PASS: Interaction retained: Phone
+PASS: Interaction retained: Window
+PASS: Interaction retained: Meal
+PASS: Interaction retained: Medicine
+PASS: Interaction retained: Door
+PASS: Interaction retained: Mirror
+PASS: Interaction retained: Shower
+PASS: Interaction retained: Tidy
+PASS: Refrigerator has no meal interaction
+PASS: Only food supplies meal interaction
+PASS: Requested entrance trash-bin placement
+PASS: Requested chair rotation
+PASS: Monitor faces the chair after 90 degree turn
+PASS: URP material: Geometry 0
+PASS: URP material: Geometry 1
+PASS: URP material: Geometry 2
+PASS: URP material: Geometry 3
+PASS: URP material: Geometry 4
+PASS: URP material: Geometry 4
+PASS: URP material: Geometry 4
+PASS: URP material: Geometry 5
+PASS: URP material: Geometry 6
+PASS: URP material: Geometry 3
+PASS: URP material: Geometry 5
+PASS: URP material: Geometry 7
+PASS: URP material: Geometry 8
+PASS: URP material: Geometry 9
+PASS: URP material: Geometry 10
+PASS: URP material: Geometry 11
+PASS: URP material: Geometry 11
+PASS: URP material: Geometry 11
+PASS: URP material: Geometry 11
+PASS: URP material: Geometry 11
+PASS: URP material: Geometry 11
+PASS: URP material: Geometry 12
+PASS: URP material: Geometry 13
+PASS: URP material: Geometry 0
+PASS: URP material: Visual
+PASS: URP material: 구성 요소#46
+PASS: URP material: 구성 요소#46
+PASS: URP material: 구성 요소#48
+PASS: URP material: 구성 요소#48
+PASS: URP material: 구성 요소#49
+PASS: URP material: 구성 요소#49
+PASS: URP material: 구성 요소#49
+PASS: URP material: 구성 요소#50
+PASS: URP material: 구성 요소#50
+PASS: URP material: 구성 요소#50
+PASS: URP material: Geometry 12
+PASS: URP material: Geometry 13
+PASS: URP material: Geometry 14
+PASS: URP material: Geometry 3
+PASS: URP material: Geometry 4
+PASS: URP material: Geometry 3
+PASS: URP material: Geometry 0
+PASS: URP material: Geometry 1
+PASS: URP material: Geometry 2
+PASS: URP material: Geometry 3
+PASS: URP material: Geometry 4
+PASS: URP material: Geometry 5
+PASS: URP material: Geometry 6
+PASS: URP material: Geometry 7
+PASS: URP material: Geometry 8
+PASS: URP material: Geometry 9
+PASS: URP material: Geometry 10
+PASS: URP material: Geometry 11
+PASS: URP material: Geometry 12
+PASS: URP material: Geometry 13
+PASS: URP material: Geometry 14
+PASS: URP material: Geometry 15
+PASS: URP material: Geometry 0
+PASS: URP material: Geometry 1
+PASS: URP material: Geometry 2
+PASS: URP material: Geometry 3
+PASS: URP material: Geometry 4
+PASS: URP material: Geometry 5
+PASS: URP material: Geometry 6
+PASS: URP material: Geometry 7
+PASS: URP material: Geometry 8
+PASS: URP material: Geometry 9
+PASS: URP material: Geometry 10
+PASS: URP material: Geometry 11
+PASS: URP material: Geometry 12
+PASS: URP material: Geometry 13
+PASS: URP material: Geometry 14
+PASS: URP material: Geometry 15
+PASS: URP material: Refrigerator(Clone)
+PASS: URP material: Part_1
+PASS: URP material: Part_1
+PASS: URP material: Part_1
+PASS: URP material: Part_6
+PASS: URP material: Part_6
+PASS: URP material: Part_6
+PASS: URP material: Part_28
+PASS: URP material: Part_28
+PASS: URP material: Part_28
+PASS: URP material: Part_35
+PASS: URP material: Part_35
+PASS: URP material: Part_35
+PASS: URP material: Part_59
+PASS: URP material: Part_59
+PASS: URP material: Part_59
+PASS: URP material: Part_60
+PASS: URP material: Part_60
+PASS: URP material: Part_60
+PASS: URP material: Part_61
+PASS: URP material: Part_61
+PASS: URP material: Part_61
+PASS: URP material: Part_62
+PASS: URP material: Part_62
+PASS: URP material: Part_62
+PASS: URP material: Part_64
+PASS: URP material: Part_64
+PASS: URP material: Part_64
+PASS: URP material: Part_65
+PASS: URP material: Part_65
+PASS: URP material: Part_65
+PASS: URP material: Part_70
+PASS: URP material: Part_70
+PASS: URP material: Part_70
+PASS: URP material: Part_71
+PASS: URP material: Part_71
+PASS: URP material: Part_71
+PASS: URP material: Part_72
+PASS: URP material: Part_72
+PASS: URP material: Part_72
+PASS: URP material: Part_73
+PASS: URP material: Part_73
+PASS: URP material: Part_73
+PASS: URP material: Part_78
+PASS: URP material: Part_78
+PASS: URP material: Part_78
+PASS: URP material: Part_81
+PASS: URP material: Part_81
+PASS: URP material: Part_81
+PASS: URP material: Part_86
+PASS: URP material: Part_86
+PASS: URP material: Part_86
+PASS: URP material: Part_87
+PASS: URP material: Part_87
+PASS: URP material: Part_87
+PASS: URP material: Part_88
+PASS: URP material: Part_88
+PASS: URP material: Part_88
+PASS: URP material: Part_89
+PASS: URP material: Part_89
+PASS: URP material: Part_89
+PASS: URP material: Part_90
+PASS: URP material: Part_90
+PASS: URP material: Part_90
+PASS: URP material: Part_91
+PASS: URP material: Part_91
+PASS: URP material: Part_91
+PASS: URP material: Geometry 0
+PASS: URP material: Geometry 1
+PASS: URP material: Geometry 3
+PASS: URP material: Geometry 4
+PASS: URP material: Geometry 6
+PASS: URP material: Geometry 7
+PASS: URP material: Geometry 13
+PASS: URP material: Geometry 5
+PASS: URP material: Geometry 0
+PASS: URP material: Geometry 1
+PASS: URP material: Geometry 2
+PASS: URP material: Geometry 3
+PASS: URP material: Geometry 4
+PASS: URP material: Geometry 5
+PASS: URP material: Geometry 5
+PASS: URP material: Geometry 6
+PASS: URP material: Geometry 6
+PASS: URP material: Geometry 6
+PASS: URP material: Geometry 6
+PASS: URP material: Geometry 7
+PASS: URP material: Geometry 8
+PASS: URP material: Geometry 9
+PASS: URP material: Geometry 10
+PASS: URP material: Geometry 11
+PASS: URP material: Geometry 12
+PASS: URP material: Geometry 13
+PASS: URP material: Geometry 14
+PASS: URP material: Geometry 15
+PASS: URP material: Geometry 16
+PASS: URP material: Geometry 17
+PASS: URP material: Geometry 18
+PASS: URP material: Geometry 19
+PASS: URP material: Geometry 20
+PASS: URP material: Geometry 3
+PASS: URP material: Geometry 21
+PASS: URP material: Geometry 6
+PASS: URP material: Geometry 6
+PASS: URP material: Geometry 6
+PASS: URP material: Geometry 6
+PASS: URP material: Geometry 5
+PASS: URP material: Geometry 5
+PASS: URP material: Geometry 10
+PASS: URP material: Geometry 11
+PASS: URP material: Geometry 12
+PASS: URP material: Geometry 4
+PASS: URP material: Geometry 5
+PASS: URP material: Geometry 0
+PASS: URP material: Geometry 1
+PASS: URP material: Geometry 2
+PASS: URP material: Geometry 5
+PASS: Runtime primitive has explicit URP material: Curtain Left
+PASS: Runtime primitive has explicit URP material: Computer Monitor
+PASS: Runtime primitive has explicit URP material: Daily Note
+PASS: Bathtub enlarged to approximately 2m by 0.94m
+PASS: Bathtub faucet orientation retained
+PASS: Enlarged bathtub fits bathroom wall bounds
+PASS: New master game starts with incomplete main objective
+PASS: Wake-up position clear of imported furniture: 
+PASS: Master main-goal sleep gate retained
+PASS: Bathroom starts closed with local prompt
+PASS: Closed bathroom door blocks entry
+PASS: Bathroom local interaction bypasses story Door type
+PASS: Bathroom opens and prompt changes
+PASS: Open bathroom door allows entry
+PASS: Bathroom closes from inside
+PASS: Closed bathroom door blocks exit
+PASS: Bathroom anti-pinch stops for player
+PASS: Bathroom finishes closing when clear
+PASS: Bathroom does not change master checklist or choices
+PASS: Master day begins: 1
+PASS: Master dialogue opens: day 1 / Phone
+PASS: Master checklist/repeatable ending interaction: day 1 / Phone
+PASS: Master main goals complete: day 1
+PASS: Master dialogue opens: day 1 / Meal
+PASS: Master checklist/repeatable ending interaction: day 1 / Meal
+PASS: Food visibility follows master meal choice: day 1
+PASS: Master sleep/collapse advances day: 1
+PASS: Next day restores daily props: 2
+PASS: Master day begins: 2
+PASS: Master dialogue opens: day 2 / Phone
+PASS: Master checklist/repeatable ending interaction: day 2 / Phone
+PASS: Master main goals complete: day 2
+PASS: Master dialogue opens: day 2 / Meal
+PASS: Master checklist/repeatable ending interaction: day 2 / Meal
+PASS: Food visibility follows master meal choice: day 2
+PASS: Master dialogue opens: day 2 / Tidy
+PASS: Master checklist/repeatable ending interaction: day 2 / Tidy
+PASS: Master Day 2 defer-cleaning choice keeps contents
+PASS: Master state and checkpoints save/load round trip
+PASS: Load restores food and deferred-cleaning visuals
+PASS: Master sleep/collapse advances day: 2
+PASS: Next day restores daily props: 3
+PASS: Master day begins: 3
+PASS: Master dialogue opens: day 3 / Phone
+PASS: Master checklist/repeatable ending interaction: day 3 / Phone
+PASS: Master dialogue opens: day 3 / Meal
+PASS: Master checklist/repeatable ending interaction: day 3 / Meal
+PASS: Master dialogue opens: day 3 / Shower
+PASS: Master checklist/repeatable ending interaction: day 3 / Shower
+PASS: Master main goals complete: day 3
+PASS: Master ordered Day 3 food dialogue retained
+PASS: Food visibility follows master meal choice: day 3
+PASS: Master sleep/collapse advances day: 3
+PASS: Next day restores daily props: 4
+PASS: Master day begins: 4
+PASS: Master dialogue opens: day 4 / Phone
+PASS: Master checklist/repeatable ending interaction: day 4 / Phone
+PASS: Master dialogue opens: day 4 / Meal
+PASS: Master checklist/repeatable ending interaction: day 4 / Meal
+PASS: Master dialogue opens: day 4 / Shower
+PASS: Master checklist/repeatable ending interaction: day 4 / Shower
+PASS: Master main goals complete: day 4
+PASS: Food visibility follows master meal choice: day 4
+PASS: Master dialogue opens: day 4 / Tidy
+PASS: Master checklist/repeatable ending interaction: day 4 / Tidy
+PASS: Positive cleaning choice removes contents but keeps bin
+PASS: Master state and checkpoints save/load round trip
+PASS: Load restores consumed food and cleaned bin
+PASS: Master sleep/collapse advances day: 4
+PASS: Next day restores daily props: 5
+PASS: Master day begins: 5
+PASS: Master dialogue opens: day 5 / Mirror
+PASS: Master checklist/repeatable ending interaction: day 5 / Mirror
+PASS: Master dialogue opens: day 5 / Medicine
+PASS: Master checklist/repeatable ending interaction: day 5 / Medicine
+PASS: Master dialogue opens: day 5 / Meal
+PASS: Master checklist/repeatable ending interaction: day 5 / Meal
+PASS: Master main goals complete: day 5
+PASS: Food visibility follows master meal choice: day 5
+PASS: Master sleep/collapse advances day: 5
+PASS: Next day restores daily props: 6
+PASS: Master day begins: 6
+PASS: Master dialogue opens: day 6 / Phone
+PASS: Master checklist/repeatable ending interaction: day 6 / Phone
+PASS: Master dialogue opens: day 6 / Mirror
+PASS: Master checklist/repeatable ending interaction: day 6 / Mirror
+PASS: Master dialogue opens: day 6 / Meal
+PASS: Master checklist/repeatable ending interaction: day 6 / Meal
+PASS: Master main goals complete: day 6
+PASS: Food visibility follows master meal choice: day 6
+PASS: Master sleep/collapse advances day: 6
+PASS: Next day restores daily props: 7
+PASS: Master day begins: 7
+PASS: Master dialogue opens: day 7 / Phone
+PASS: Master checklist/repeatable ending interaction: day 7 / Phone
+PASS: Master main goals complete: day 7
+PASS: Master dialogue opens: day 7 / Meal
+PASS: Master checklist/repeatable ending interaction: day 7 / Meal
+PASS: Food visibility follows master meal choice: day 7
+PASS: Master Day 7 contact recovery flag retained
+PASS: Master contact-recovery flag prevents further mental loss
+PASS: Master sleep/collapse advances day: 7
+PASS: Next day restores daily props: 8
+PASS: Master day begins: 8
+PASS: Master dialogue opens: day 8 / Phone
+PASS: Master checklist/repeatable ending interaction: day 8 / Phone
+PASS: Master dialogue opens: day 8 / Meal
+PASS: Master checklist/repeatable ending interaction: day 8 / Meal
+PASS: Master dialogue opens: day 8 / Window
+PASS: Master checklist/repeatable ending interaction: day 8 / Window
+PASS: Master main goals complete: day 8
+PASS: Food visibility follows master meal choice: day 8
+PASS: Master sleep/collapse advances day: 8
+PASS: Next day restores daily props: 9
+PASS: Master day begins: 9
+PASS: Master dialogue opens: day 9 / Phone
+PASS: Master checklist/repeatable ending interaction: day 9 / Phone
+PASS: Master dialogue opens: day 9 / Meal
+PASS: Master checklist/repeatable ending interaction: day 9 / Meal
+PASS: Master dialogue opens: day 9 / Door
+PASS: Master checklist/repeatable ending interaction: day 9 / Door
+PASS: Master main goals complete: day 9
+PASS: Food visibility follows master meal choice: day 9
+PASS: Final master Day 9 wait choice leaves entrance closed
+PASS: Master sleep/collapse advances day: 9
+PASS: Next day restores daily props: 10
+PASS: Master day begins: 10
+PASS: Master dialogue opens: day 10 / Phone
+PASS: Master checklist/repeatable ending interaction: day 10 / Phone
+PASS: Master main goals complete: day 10
+PASS: Master dialogue opens: day 10 / Meal
+PASS: Master checklist/repeatable ending interaction: day 10 / Meal
+PASS: Food visibility follows master meal choice: day 10
+PASS: Master dialogue opens: day 10 / Door
+PASS: Master checklist/repeatable ending interaction: day 10 / Door
+PASS: Master Day 10 ending displayed
+PASS: Master mental-depletion rollback preserved

@@ -1,3 +1,0 @@
-PASS: URP renderer materials, hidden colonly helpers, spawn floor, wall collision, open doorway, isolated story/save systems.
-PASS: actual Unity Play Mode; capsule floor support, wall blocking, open-door traversal; URP camera renders captured.
-NOTE: UnityEditor.Search.SearchDatabase startup indexing logged one ArgumentOutOfRangeException. Play Mode checks and three URP captures completed; no clean-editor-wide pass claimed.

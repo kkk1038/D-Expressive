@@ -1,0 +1,26 @@
+구성 요소#46 bounds=Center: (0.08, 0.01, 0.09), Extents: (0.08, 0.01, 0.09)
+  Material=_25 shader=Universal Render Pipeline/Lit color=RGBA(1.000, 1.000, 1.000, 1.000)
+  Material=_24 shader=Universal Render Pipeline/Lit color=RGBA(1.000, 1.000, 1.000, 1.000)
+    _MainTex=_24 1024x1024 Assets/ThirdParty/DeskMedicine/Textures/_24.jpg
+    _BaseMap=_24 1024x1024 Assets/ThirdParty/DeskMedicine/Textures/_24.jpg
+구성 요소#48 bounds=Center: (0.05, 0.01, 0.25), Extents: (0.04, 0.00, 0.03)
+  Material=재질#1 shader=Universal Render Pipeline/Lit color=RGBA(1.000, 1.000, 1.000, 1.000)
+    _MainTex=약봉지 512x512 Assets/ThirdParty/DeskMedicine/Textures/약봉지.png
+    _BaseMap=약봉지 512x512 Assets/ThirdParty/DeskMedicine/Textures/약봉지.png
+  Material=_26 shader=Universal Render Pipeline/Lit color=RGBA(0.992, 0.992, 0.996, 0.700)
+구성 요소#49 bounds=Center: (0.06, 0.01, 0.21), Extents: (0.04, 0.00, 0.03)
+  Material=_27 shader=Universal Render Pipeline/Lit color=RGBA(1.000, 1.000, 1.000, 1.000)
+    _MainTex=약봉지2 512x512 Assets/ThirdParty/DeskMedicine/Textures/약봉지2.png
+    _BaseMap=약봉지2 512x512 Assets/ThirdParty/DeskMedicine/Textures/약봉지2.png
+  Material=재질#1 shader=Universal Render Pipeline/Lit color=RGBA(1.000, 1.000, 1.000, 1.000)
+    _MainTex=약봉지 512x512 Assets/ThirdParty/DeskMedicine/Textures/약봉지.png
+    _BaseMap=약봉지 512x512 Assets/ThirdParty/DeskMedicine/Textures/약봉지.png
+  Material=_26 shader=Universal Render Pipeline/Lit color=RGBA(0.992, 0.992, 0.996, 0.700)
+구성 요소#50 bounds=Center: (0.08, 0.01, 0.16), Extents: (0.04, 0.00, 0.03)
+  Material=_28 shader=Universal Render Pipeline/Lit color=RGBA(1.000, 1.000, 1.000, 1.000)
+    _MainTex=약봉지3 512x512 Assets/ThirdParty/DeskMedicine/Textures/약봉지3.png
+    _BaseMap=약봉지3 512x512 Assets/ThirdParty/DeskMedicine/Textures/약봉지3.png
+  Material=재질#1 shader=Universal Render Pipeline/Lit color=RGBA(1.000, 1.000, 1.000, 1.000)
+    _MainTex=약봉지 512x512 Assets/ThirdParty/DeskMedicine/Textures/약봉지.png
+    _BaseMap=약봉지 512x512 Assets/ThirdParty/DeskMedicine/Textures/약봉지.png
+  Material=_26 shader=Universal Render Pipeline/Lit color=RGBA(0.992, 0.992, 0.996, 0.700)

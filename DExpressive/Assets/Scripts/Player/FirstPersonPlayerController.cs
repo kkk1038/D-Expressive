@@ -49,11 +49,24 @@ public class FirstPersonPlayerController : MonoBehaviour
             (Keyboard.current.dKey.isPressed ? 1 : 0) - (Keyboard.current.aKey.isPressed ? 1 : 0),
             (Keyboard.current.wKey.isPressed ? 1 : 0) - (Keyboard.current.sKey.isPressed ? 1 : 0));
 
-        Vector3 movement = (transform.right * input.x + transform.forward * input.y).normalized * moveSpeed;
+        Vector3 movement = (transform.right * input.x + transform.forward * input.y).normalized
+            * moveSpeed * GetMentalStateSpeedMultiplier();
         if (characterController.isGrounded && verticalVelocity < 0) verticalVelocity = -2f;
         verticalVelocity += Physics.gravity.y * Time.deltaTime;
         movement.y = verticalVelocity;
         characterController.Move(movement * Time.deltaTime);
+    }
+
+    private static float GetMentalStateSpeedMultiplier()
+    {
+        if (GameStateManager.Instance == null) return 1f;
+
+        GameStateData state = GameStateManager.Instance.CurrentState;
+        int mentalState = state.dayStartMentalState > 0 ? state.dayStartMentalState : state.mentalState;
+        if (state.day == 6) mentalState = 10;
+        if (mentalState <= 10) return 0.30f;
+        if (mentalState <= 50) return 0.70f;
+        return 1f;
     }
 
     private void LookForInteraction()
@@ -70,12 +83,8 @@ public class FirstPersonPlayerController : MonoBehaviour
             transform.Rotate(Vector3.up * mouseDelta.x);
         }
 
-        focusedTarget = null;
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance))
-        {
-            focusedTarget = hit.collider.GetComponentInParent<PrototypeInteractionTarget>();
-        }
+        focusedTarget = FindInteractionTarget(ray);
 
         if (previousFocusedTarget != focusedTarget)
         {
@@ -95,6 +104,32 @@ public class FirstPersonPlayerController : MonoBehaviour
         {
             if (!focusedTarget.TryInteractLocally()) PrototypeInteractionController.Interact(focusedTarget.Type);
         }
+    }
+
+    private PrototypeInteractionTarget FindInteractionTarget(Ray ray)
+    {
+        RaycastHit[] hits = Physics.RaycastAll(ray, interactionDistance);
+        if (hits.Length == 0) return null;
+
+        System.Array.Sort(hits, (left, right) => left.distance.CompareTo(right.distance));
+        PrototypeInteractionTarget sleepFallback = null;
+        foreach (RaycastHit hit in hits)
+        {
+            PrototypeInteractionTarget target = hit.collider.GetComponentInParent<PrototypeInteractionTarget>();
+            if (target == null) continue;
+
+            // Imported bed colliders are broad enough to overlap props lying
+            // on the mattress. A visible prop such as the phone must win over
+            // the bed's sleep target when both are under the crosshair.
+            if (target.Type != PrototypeInteractionTarget.InteractionType.Sleep)
+            {
+                return target;
+            }
+
+            sleepFallback ??= target;
+        }
+
+        return sleepFallback;
     }
 
     private static string GetPrompt(PrototypeInteractionTarget.InteractionType type)
@@ -124,6 +159,13 @@ public class FirstPersonPlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    /// <summary>Resets the local camera pitch when a new day begins in bed.</summary>
+    public void ResetViewPitch()
+    {
+        pitch = 0f;
+        if (playerCamera != null) playerCamera.transform.localRotation = Quaternion.identity;
     }
 
     private void OnDisable()

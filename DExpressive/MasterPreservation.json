@@ -1,0 +1,32 @@
+{
+  "Baseline": "D-Expressive-master.zip",
+  "BaselineSHA256": "3CDBD87ACB9D5CE58F028C0C9AFEC383671D978A37A48890847A1D6BB7C91324",
+  "Unchanged": 728,
+  "Changed": [
+    "Assets/Scenes/SampleScene.unity",
+    "Assets/Scripts/Environment/DailyRoomEvolution.cs",
+    "Assets/Scripts/Environment/PrototypeInteractionController.cs",
+    "Assets/Scripts/Environment/PrototypeInteractionTarget.cs",
+    "Assets/Scripts/Environment/PrototypeRoomBootstrap.cs",
+    "Assets/Scripts/Environment/RoomActionVisuals.cs",
+    "Assets/Scripts/Environment/RoomMoodController.cs",
+    "Assets/Scripts/Player/FirstPersonPlayerBootstrap.cs",
+    "Assets/Scripts/Player/FirstPersonPlayerController.cs",
+    "Assets/Scripts/UI/KoreanFontBootstrap.cs",
+    "Assets/Settings/DefaultVolumeProfile.asset",
+    "Assets/Settings/PC_RPAsset.asset",
+    "Assets/Settings/UniversalRenderPipelineGlobalSettings.asset",
+    "Assets/Tests/EditMode/StoryContentFactoryTests.cs",
+    "ProjectSettings/ProjectSettings.asset",
+    "ProjectSettings/UnityConnectSettings.asset",
+    "README.md"
+  ],
+  "Missing": [
+    "Assets/Resources/Fonts/MalgunGothic.ttf",
+    "Assets/Resources/Fonts/MalgunGothic.ttf.meta"
+  ],
+  "ProtectedUnchanged": 58,
+  "ProtectedChanged": [],
+  "IntentionalRemoval": "MalgunGothic.ttf/meta replaced with Nanum Gothic under OFL 1.1",
+  "Scope": "Latest master core/story/day progression/save/audio/UI/wake/sleep/ending are preserved; explicit asset integration patches applied to environment and interaction dispatch."
+}

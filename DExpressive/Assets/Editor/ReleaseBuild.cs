@@ -26,12 +26,13 @@ public static class ReleaseBuild
         PlayerSettings.defaultScreenHeight = 720;
         PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
         PlayerSettings.resizableWindow = true;
-        PlayerSettings.bundleVersion = "0.1.0";
-        Directory.CreateDirectory("Builds/Windows");
+        PlayerSettings.bundleVersion = "0.2.2";
+        string output = Environment.GetEnvironmentVariable("DEXPRESSIVE_WINDOWS_OUTPUT") ?? "Builds/Windows/DExpressive.exe";
+        Directory.CreateDirectory(Path.GetDirectoryName(output));
         var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
         {
             scenes = new[] { "Assets/Scenes/SampleScene.unity" },
-            locationPathName = "Builds/Windows/DExpressive.exe",
+            locationPathName = output,
             target = BuildTarget.StandaloneWindows64,
             options = BuildOptions.None
         });

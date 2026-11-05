@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using TMPro;
 using System;
+using System.Collections;
 
 public class ChoiceUI : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class ChoiceUI : MonoBehaviour
     private DialogueChoice[] displayedDialogueChoices;
     private bool initialized;
     private bool isSelecting;
+    private bool dialogueInputEnabled;
 
     public bool IsShowing => choicePanel != null && choicePanel.activeSelf;
 
@@ -31,6 +33,7 @@ public class ChoiceUI : MonoBehaviour
         onDialogueChoiceSelected = null;
         displayedDialogueChoices = null;
         isSelecting = false;
+        dialogueInputEnabled = false;
         choicePanel.SetActive(false);
         EventSystem.current?.SetSelectedGameObject(null);
     }
@@ -65,10 +68,11 @@ public class ChoiceUI : MonoBehaviour
         replyButton.gameObject.SetActive(true);
         ignoreButton.gameObject.SetActive(true);
         choicePanel.SetActive(true);
+        dialogueInputEnabled = true;
     }
 
     public void ShowDialogue(string speakerName, string dialogueText,
-        DialogueChoice[] choices, Action<int> choiceCallback)
+        DialogueChoice[] choices, Action<int> choiceCallback, bool heavyPresentation = false)
     {
         Initialize();
         if (choices == null || choices.Length < 1 || choices.Length > 2)
@@ -79,29 +83,31 @@ public class ChoiceUI : MonoBehaviour
 
         onDialogueChoiceSelected = choiceCallback;
         displayedDialogueChoices = choices;
-        questionText.text = string.IsNullOrWhiteSpace(speakerName)
-            ? dialogueText
-            : speakerName + "\n" + dialogueText;
+        dialogueInputEnabled = false;
+        string prefix = string.IsNullOrWhiteSpace(speakerName) ? string.Empty : speakerName + "\n";
+        questionText.text = prefix + dialogueText;
 
         replyButton.gameObject.SetActive(true);
         SetButtonText(replyButton, choices[0].buttonText);
+        ApplyChoiceStyle(replyButton, choices[0].mentalChange, heavyPresentation);
 
         bool hasSecondChoice = choices.Length == 2;
         ignoreButton.gameObject.SetActive(hasSecondChoice);
         if (hasSecondChoice)
         {
             SetButtonText(ignoreButton, choices[1].buttonText);
+            ApplyChoiceStyle(ignoreButton, choices[1].mentalChange, heavyPresentation);
         }
 
         choicePanel.SetActive(true);
-        FocusFirstChoice();
+        if (heavyPresentation) StartCoroutine(TypeHeavyDialogue(prefix, dialogueText)); else FocusFirstChoice();
     }
 
     private void Update()
     {
         // Title/pause menus must own their clicks even if a dialogue was
         // prepared behind them during scene startup.
-        if (!IsShowing || PrototypeGameUI.IsMenuOpen) return;
+        if (!IsShowing || PrototypeGameUI.IsMenuOpen || !dialogueInputEnabled) return;
 
         // Fallback for the prototype canvas: handles clicks by the actual
         // button rectangles even if another UI graphic intercepts a raycast.
@@ -134,7 +140,7 @@ public class ChoiceUI : MonoBehaviour
 
     private void OnReply()
     {
-        if (isSelecting || !IsShowing) return;
+        if (isSelecting || !IsShowing || !dialogueInputEnabled) return;
         if (onDialogueChoiceSelected != null)
         {
             SelectDialogueOption(0);
@@ -150,7 +156,7 @@ public class ChoiceUI : MonoBehaviour
 
     private void OnIgnore()
     {
-        if (isSelecting || !IsShowing) return;
+        if (isSelecting || !IsShowing || !dialogueInputEnabled) return;
         if (onDialogueChoiceSelected != null)
         {
             SelectDialogueOption(1);
@@ -203,12 +209,42 @@ public class ChoiceUI : MonoBehaviour
         isSelecting = false;
     }
 
-    private void FocusFirstChoice()
+private void FocusFirstChoice()
     {
         FirstPersonPlayerController.UnlockCursor();
+        dialogueInputEnabled = true;
         replyButton.interactable = true;
         ignoreButton.interactable = true;
         EventSystem.current?.SetSelectedGameObject(replyButton.gameObject);
+    }
+
+    private IEnumerator TypeHeavyDialogue(string prefix, string dialogueText)
+    {
+        replyButton.interactable = false;
+        ignoreButton.interactable = false;
+        questionText.text = prefix;
+        for (int index = 0; index < dialogueText.Length; index++)
+        {
+            questionText.text += dialogueText[index];
+            yield return new WaitForSecondsRealtime(0.055f);
+            if (index == dialogueText.Length / 2 || dialogueText[index] == '.' || dialogueText[index] == ',') yield return new WaitForSecondsRealtime(0.3f);
+        }
+        FocusFirstChoice();
+    }
+
+    private static void ApplyChoiceStyle(Button button, int mentalChange, bool heavy)
+    {
+        Image image = button.GetComponent<Image>();
+        TMP_Text label = button.GetComponentInChildren<TMP_Text>();
+        if (!heavy)
+        {
+            if (image != null) image.color = new Color(0.2f, 0.38f, 0.62f, 1f);
+            if (label != null) label.color = Color.white;
+            return;
+        }
+        bool positive = mentalChange > 0;
+        if (image != null) image.color = positive ? new Color(0.18f, 0.23f, 0.30f, 0.55f) : new Color(0.48f, 0.11f, 0.14f, 1f);
+        if (label != null) label.color = positive ? new Color(0.78f, 0.80f, 0.84f, 0.58f) : new Color(1f, 0.82f, 0.82f, 1f);
     }
 
     private void ConfigureLayout()

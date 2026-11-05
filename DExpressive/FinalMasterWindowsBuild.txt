@@ -1,0 +1,8 @@
+Result: Succeeded
+Platform: Windows x64
+Unity: 6000.3.22f1
+Size: 353802572
+Errors: 0
+Warnings: 0
+Duration: 00:00:32.0832381
+Built UTC: 2026-11-05T10:09:15.3968307Z

@@ -10,9 +10,9 @@ public class PrototypeInteractionTarget : MonoBehaviour
 
     public bool TryInteractLocally()
     {
-        var door = GetComponent<BathroomDoorController>();
-        if (!door) return false;
-        door.Toggle();
+        var bathroomDoor = GetComponent<BathroomDoorController>();
+        if (bathroomDoor == null) return false;
+        bathroomDoor.Toggle();
         return true;
     }
 

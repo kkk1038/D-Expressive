@@ -5,6 +5,7 @@ using UnityEngine;
 public class AdditionalRoomPropsPalette : ScriptableObject
 {
     public GameObject phone,meal,shoe,fridge,vanity,mirror,toilet,paper,brush,shower,tub,towelRail,soap,bathMat,trashBin,shelf,washingMachine;
+    public GameObject deskPapers, medicineBag;
 
     public void Apply(Transform room)
     {
@@ -16,6 +17,10 @@ public class AdditionalRoomPropsPalette : ScriptableObject
         jamb.position=new Vector3(-1.57f,1.2f,-0.13f);
         Replace(room,root,"Phone - Click to Read",phone,new Vector3(2.5f,1.145f,5.5f),0,PrototypeInteractionTarget.InteractionType.Phone);
         Replace(room,root,"Meal - Interact",meal,new Vector3(1.75f,1.145f,5.5f),-12,PrototypeInteractionTarget.InteractionType.Meal);
+        if (deskPapers != null)
+            Replace(room,root,"Cup - Click to Tidy",deskPapers,new Vector3(1.3f,1.155f,5.0f),12,PrototypeInteractionTarget.InteractionType.Tidy);
+        if (medicineBag != null)
+            Replace(room,root,"Medicine - Interact",medicineBag,new Vector3(3.4f,1.155f,5.0f),-8,PrototypeInteractionTarget.InteractionType.Medicine);
         Replace(room,root,"Sink - Click to Wash",vanity,new Vector3(-3.25f,0.25f,1.1f),180,PrototypeInteractionTarget.InteractionType.Shower);
         Replace(room,root,"Mirror - Click to Look",mirror,new Vector3(-3.25f,1.725f,1.32f),180,PrototypeInteractionTarget.InteractionType.Mirror);
         Replace(room,root,"Bathroom Shelf",shelf,new Vector3(-4.35f,1.44f,1.15f),0,null);
@@ -38,12 +43,20 @@ public class AdditionalRoomPropsPalette : ScriptableObject
         Place(brush,root,"Toilet Brush",new Vector3(-4.2f,0.05f,0.9f),0);
         var showerObject=Place(shower,root,"Bathroom Shower - Wash",new Vector3(-2.32f,0.05f,-0.78f),0);
         showerObject.AddComponent<PrototypeInteractionTarget>().SetType(PrototypeInteractionTarget.InteractionType.Shower);
-        var bathtub=Place(tub,root,"Bathroom Bathtub - Wash",new Vector3(-3.95f,0.05f,-0.8f),90);
+        var bathtub=Place(tub,root,"Bathroom Bathtub - Wash",new Vector3(-3.95f,0.05f,-0.8f),270);
+        FitBathtub(bathtub.transform);
         bathtub.AddComponent<PrototypeInteractionTarget>().SetType(PrototypeInteractionTarget.InteractionType.Shower);
         Place(towelRail,root,"Bathroom Towel Rail",new Vector3(-2.25f,1.15f,1.32f),90);
         Place(soap,root,"Bathroom Hand Soap",new Vector3(-3.65f,0.92f,1),180);
         Place(bathMat,root,"Bathroom Bath Mat",new Vector3(-3.2f,0.052f,0.5f),0);
         Debug.Log("ADDITIONAL_ROOM_PROPS_APPLIED");
+    }
+
+    public static void FitBathtub(Transform bathtub)
+    {
+        bathtub.position = new Vector3(-3.82f, 0.05f, -0.72f);
+        bathtub.rotation = Quaternion.Euler(0, 270, 0);
+        bathtub.localScale = new Vector3(1.25f, 1.3f, 1.2f);
     }
 
     private static GameObject Place(GameObject prefab,Transform root,string name,Vector3 position,float yaw)

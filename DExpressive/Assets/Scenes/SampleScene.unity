@@ -879,6 +879,8 @@ GameObject:
   - component: {fileID: 768260591}
   - component: {fileID: 768260592}
   - component: {fileID: 768260593}
+  - component: {fileID: 768260594}
+  - component: {fileID: 768260595}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -1025,7 +1027,7 @@ MonoBehaviour:
   rollbackManager: {fileID: 768260580}
   days: []
   startCurrentDayOnStart: 1
-  noActionSleepMentalPenalty: 30
+  incompleteInteractionPenalty: 10
 --- !u!114 &768260587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1120,6 +1122,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c7cca31d56fd344b7f164c2440ad07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KoreanFontBootstrap
+--- !u!114 &768260594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768260576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08a903009dd85b489e4a6d2cad4cd0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MentalStateBgmController
+  volume: 0.35
+  crossFadeDuration: 0.75
+--- !u!114 &768260595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768260576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b487a63641f16f14d8f4a6d6667abd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractionSoundController
+  phoneVolume: 0.5
+  interactionVolume: 0.48
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

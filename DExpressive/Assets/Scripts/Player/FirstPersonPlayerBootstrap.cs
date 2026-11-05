@@ -5,12 +5,18 @@ using UnityEngine.UI;
 /// <summary>Creates a runtime-only first-person capsule in the prototype room.</summary>
 public class FirstPersonPlayerBootstrap : MonoBehaviour
 {
+    // Bedside viewpoint matching the intended opening composition: the desk,
+    // wardrobe and morning light are in front of the player after waking.
+    public static readonly Vector3 WakeUpPosition = new(-1.0f, 0.05f, 3.15f);
+    public const float WakeUpYaw = 102f;
+
     private void Awake()
     {
         if (!Application.isPlaying) return;
 
         GameObject player = new GameObject("First Person Player (Runtime Only)");
-        player.transform.position = new Vector3(0f, 0.05f, -0.8f);
+        player.transform.position = WakeUpPosition;
+        player.transform.rotation = Quaternion.Euler(0f, WakeUpYaw, 0f);
         CharacterController controller = player.AddComponent<CharacterController>();
         controller.height = 1.8f;
         controller.radius = 0.32f;

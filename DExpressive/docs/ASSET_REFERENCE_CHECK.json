@@ -1,8 +1,8 @@
 {
-  "Generated": "2026-11-04",
-  "InventoryFiles": 1903,
-  "ScannedFiles": 313,
-  "CheckedGuidReferences": 3271,
+  "Generated": "2026-11-05",
+  "InventoryFiles": 1999,
+  "ScannedFiles": 322,
+  "CheckedGuidReferences": 3314,
   "DuplicateGuids": [],
   "CurrentAssetUnresolvedGuidReferences": [],
   "LegacySampleUnresolvedGuidReferences": [
@@ -352,6 +352,20 @@
       "Field": "washingMachine",
       "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/WashingMachine.prefab",
       "GUID": "94fffcf989f8be749bb2354eba78c64f",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "deskPapers",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/DeskPapers.prefab",
+      "GUID": "6801c430d2e5a794a85a3af7d7f64583",
+      "Exists": true
+    },
+    {
+      "Palette": "AdditionalRoomPropsPalette",
+      "Field": "medicineBag",
+      "Path": "Assets/ThirdParty/AdditionalProps/GamePrefabs/MedicineBag.prefab",
+      "GUID": "6f6d6647f340e694892ccfa114b6cf6f",
       "Exists": true
     }
   ],

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1962e6f7e271124fb2ab7eb63d3e299, type: 3}
+  m_Name: AdditionalRoomPropsPalette
+  m_EditorClassIdentifier: Assembly-CSharp::AdditionalRoomPropsPalette
+  phone: {fileID: 3965509360943680072, guid: 4a7b137a85bf5bd4b92ff62054c6e50c, type: 3}
+  meal: {fileID: 7971762491981806793, guid: ac939c1c242276c4dadc8aa729f28a6e, type: 3}
+  shoe: {fileID: 3448386792104082619, guid: 102503236e1de1d4f8aa8d89e7ed5766, type: 3}
+  fridge: {fileID: 8277759107907387066, guid: 18f2c8f887b1eeb4c85e5f0b42157a2f, type: 3}
+  vanity: {fileID: 8579624368264164894, guid: dd9778b4d42c75c4d9029cbf438130cf, type: 3}
+  mirror: {fileID: 526291259876775354, guid: feed65a2e8fb94843a14b1ba37b150eb, type: 3}
+  toilet: {fileID: 8730784792460650471, guid: a23f6aa1ff2286a4582d3afc69e14e53, type: 3}
+  paper: {fileID: 1046198125653851554, guid: f4c436551cb5b7c4a9ecf831e58801da, type: 3}
+  brush: {fileID: 3066403687815044779, guid: 98667aebfe8062848bbace04fb6d8010, type: 3}
+  shower: {fileID: 4067639665280690081, guid: 26fd19f3bee5c704e94c3b78d80cfc4e, type: 3}
+  tub: {fileID: 2657123579374045508, guid: b6b87a64b4f7b0149b1df82344037a2b, type: 3}
+  towelRail: {fileID: 5972701287699215339, guid: dafc1852355d490448d27b692f02c294, type: 3}
+  soap: {fileID: 7811941380992215880, guid: 99f4c160d12168444ad26748203033af, type: 3}
+  bathMat: {fileID: 8861424899991638483, guid: f8a3e9e228c402140a08bf8b0da6b072, type: 3}
+  trashBin: {fileID: 1948068367666729493, guid: b87ec431fcfe2ef47bfb511395f1e1d9, type: 3}
+  shelf: {fileID: 8942428569497416099, guid: 9bb8f4769cd81b14d97b4d89ce5911f2, type: 3}
+  washingMachine: {fileID: 4879821981026912898, guid: 94fffcf989f8be749bb2354eba78c64f, type: 3}

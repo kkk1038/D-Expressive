@@ -2,22 +2,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>Shows the current chapter's mood and one small achievable action.</summary>
+/// <summary>Shows the current chapter, main objective, and daily interaction checklist.</summary>
 public class DayPresentationController : MonoBehaviour
 {
     private static readonly string[] Titles = { "", "수레바퀴", "손상", "균열", "늪", "침잠", "낙하", "격돌", "혼란", "비상", "발걸음" };
-    private static readonly string[] Goals =
-    {
-        "", "방 안에서 할 수 있는 일을 하나 해 보자.", "아주 작은 일 하나만 해도 충분하다.",
-        "식사나 세수처럼 몸을 돌보는 일을 해 보자.", "연락 하나 또는 정리 하나를 선택해 보자.",
-        "거울을 보고, 오늘의 자신을 외면하지 말자.", "짧은 답장 하나를 남겨 보자.",
-        "혼자 견디기 어렵다면 누군가에게 연락해 보자.", "어제의 대화에 짧게라도 답해 보자.",
-        "문 앞에서 잠시 숨을 고르고 주변을 살펴보자.", "오늘의 준비를 하나만 마쳐 보자."
-    };
-
     private DayManager dayManager;
     private TMP_Text chapterText;
     private TMP_Text goalText;
+    private RectTransform cardRect;
+    private Vector2 cardBasePosition;
 
     private void Start()
     {
@@ -45,14 +38,16 @@ public class DayPresentationController : MonoBehaviour
         GameObject card = new GameObject("Daily Presentation", typeof(RectTransform), typeof(Image));
         card.transform.SetParent(canvas.transform, false);
         RectTransform rect = card.GetComponent<RectTransform>();
+        cardRect = rect;
         rect.anchorMin = rect.anchorMax = new Vector2(1f, 1f);
         rect.pivot = new Vector2(1f, 1f);
         rect.anchoredPosition = new Vector2(-30f, -30f);
-        rect.sizeDelta = new Vector2(360f, 120f);
+        cardBasePosition = rect.anchoredPosition;
+        rect.sizeDelta = new Vector2(360f, 350f);
         card.GetComponent<Image>().color = new Color(0.04f, 0.07f, 0.13f, 0.7f);
 
         chapterText = CreateText(card.transform, new Vector2(18f, -16f), new Vector2(-18f, -48f), 24, FontStyles.Bold);
-        goalText = CreateText(card.transform, new Vector2(18f, -52f), new Vector2(-18f, -108f), 17, FontStyles.Normal);
+        goalText = CreateText(card.transform, new Vector2(18f, -52f), new Vector2(-18f, -330f), 18, FontStyles.Normal);
     }
 
     private static TMP_Text CreateText(Transform parent, Vector2 topLeft, Vector2 bottomRight, float size, FontStyles style)
@@ -73,8 +68,38 @@ public class DayPresentationController : MonoBehaviour
     private void Refresh(int day)
     {
         day = Mathf.Clamp(day, 1, 10);
-        bool acted = GameStateManager.Instance != null && GameStateManager.Instance.CurrentState.completedInteractions.Contains("day_" + day + "_action_taken");
         if (chapterText != null) chapterText.text = "DAY " + day + "  |  " + Titles[day];
-        if (goalText != null) goalText.text = acted ? "오늘의 작은 행동을 해냈습니다." : "오늘의 작은 목표\n" + Goals[day];
+        if (goalText != null)
+        {
+            string description = day switch
+            {
+                3 => "몸을 움직이기 힘들다..\n무엇을 할지 신중하게 정하자",
+                4 => "해야 할 일은 알지만,\n행동으로 옮기기 어렵다",
+                5 => "작은 행동 하나도\n오늘은 큰 선택처럼 느껴진다",
+                6 => "일상을 유지할 여유가\n거의 남아 있지 않다",
+                7 => "혼자 감당하기 어렵다면\n누군가에게 마음을 전해 보자",
+                8 => "후회와 안도감 사이에서\n작은 변화를 이어 가 보자",
+                9 => "문 앞까지 왔지만,\n오늘은 아직 열 수 없다",
+                _ => string.Empty
+            };
+            string checklist = string.IsNullOrEmpty(description) ? string.Empty : description + "\n\n";
+            checklist += "메인 목표: " + dayManager.GetMainGoalDescription();
+            foreach (PrototypeInteractionTarget.InteractionType interaction in dayManager.GetPenaltyInteractions())
+            {
+                bool complete = dayManager.IsInteractionCompleted(interaction);
+                string mark = complete ? "<color=#5CDB78>O</color>" : "<color=#FF5B5B>X</color>";
+                checklist += "\n" + DayManager.GetInteractionLabel(interaction) + "  " + mark;
+            }
+            goalText.text = checklist;
+        }
+    }
+
+    private void Update()
+    {
+        if (cardRect == null || dayManager == null) return;
+        bool heavyDay = dayManager.CurrentDay == 5 || dayManager.CurrentDay == 6;
+        bool needsGoal = !dayManager.HasCompletedMainGoal();
+        float pulse = heavyDay && needsGoal ? Mathf.Max(0f, Mathf.Sin(Time.unscaledTime * 2.4f)) : 0f;
+        cardRect.anchoredPosition = cardBasePosition + new Vector2(pulse * 2.2f, 0f);
     }
 }
